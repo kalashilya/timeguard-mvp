@@ -9,12 +9,23 @@
 | Раздел | Ссылка |
 |---|---|
 | Live site | `https://kalashilya.github.io/timeguard-mvp/` |
-| Demo Center | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/demo-center.html?v=10` |
-| Pitch | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pitch.html?v=9` |
-| Planner | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/app.html?v=6` |
-| Cabinet | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cabinet.html?v=7` |
-| Cloud tasks | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cloud.html?v=7` |
-| Pricing | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pricing.html` |
+| Demo Center | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/demo-center.html?v=11` |
+| Pitch | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pitch.html?v=11` |
+| Planner | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/app.html?v=11` |
+| Cabinet | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cabinet.html?v=11` |
+| Cloud tasks | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cloud.html?v=11` |
+| Pricing | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pricing.html?v=11` |
+
+## Render-ready status
+
+Проект подготовлен к деплою на Render:
+
+- добавлен `render.yaml`;
+- добавлен `docs/render-deploy.md`;
+- проект публикуется как static site из корня репозитория;
+- для текущего MVP build step не нужен.
+
+После создания Render-сервиса сюда можно добавить новую ссылку вида `https://timeguard-planner.onrender.com`.
 
 ## Как быстро проверить проект
 
@@ -73,22 +84,25 @@ TimeGuard проверяет расписание до сохранения за
 - RLS-политики;
 - Supabase CLI config;
 - миграции и seed-файл;
+- Render static site config;
 - Free-лимит и тарифный сценарий;
 - учебная admin-сводка;
 - тест-план, метрики, ограничения и сценарий защиты.
 
 ## Стек
 
-HTML, CSS, JavaScript, localStorage, GitHub Pages, Supabase.
+HTML, CSS, JavaScript, localStorage, GitHub Pages, Render-ready static site, Supabase.
 
 ## Структура репозитория
 
 ```text
 .
 ├── index.html
+├── render.yaml
 ├── docs/
 │   ├── final-checklist.md
 │   ├── final-submission.md
+│   ├── render-deploy.md
 │   └── repository-map.md
 ├── notes/
 ├── prompts/
