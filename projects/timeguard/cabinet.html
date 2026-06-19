@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard кабинет</title>
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.css?v=5">
 </head>
 <body data-page="cabinet">
   <header class="header">
@@ -22,7 +22,7 @@
         <div class="cards">
           <article class="card small-card"><h3>Профиль</h3><p id="cabinetProfile"></p></article>
           <article class="card small-card"><h3>Тариф</h3><p class="price" id="cabinetPlan">FREE</p></article>
-          <article class="card small-card"><h3>Хранение</h3><p>браузер + Supabase-ready</p></article>
+          <article class="card small-card"><h3>Хранение</h3><p>браузер + Supabase</p></article>
         </div>
         <div class="actions"><button class="btn btn-primary" id="syncSupabaseBtn">Синхронизировать с Supabase</button><a class="btn btn-secondary" href="login.html">Войти через Supabase</a></div>
         <div id="syncResult" class="alert hidden"></div>
@@ -34,9 +34,9 @@
     </div>
   </main>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="supabase-settings.js"></script>
-  <script src="supabase-adapter.js"></script>
-  <script src="supabase-sync.js"></script>
-  <script src="app.js"></script>
+  <script src="supabase-settings.js?v=5"></script>
+  <script src="supabase-adapter.js?v=5"></script>
+  <script src="supabase-sync.js?v=5"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
