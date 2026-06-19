@@ -10,7 +10,7 @@
 <header class="header">
   <div class="container header-inner">
     <a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>умный планировщик дня</small></span></a>
-    <nav class="nav"><a href="#value">Ценность</a><a href="#planner">Планировщик</a><a href="cabinet.html">Кабинет</a><a href="pricing.html">Тарифы</a></nav>
+    <nav class="nav"><a href="#value">Ценность</a><a href="#planner">Планировщик</a><a href="register.html">Профиль</a><a href="cabinet.html">Кабинет</a><a href="pricing.html">Тарифы</a></nav>
   </div>
 </header>
 <main>
@@ -20,7 +20,7 @@
         <p class="eyebrow">TimeGuard Planner</p>
         <h1>Соберите реалистичный план дня без пересечений</h1>
         <p class="lead">Добавляйте дела на сегодня и будущие даты. TimeGuard сортирует задачи и предупреждает, если два дела стоят на одно время.</p>
-        <div class="actions"><a class="btn btn-primary" href="#planner">Начать планирование</a><button class="btn btn-secondary" id="fillDemoBtn">Заполнить примером</button></div>
+        <div class="actions"><a class="btn btn-primary" href="#planner">Начать планирование</a><button class="btn btn-secondary" id="fillDemoBtn">Заполнить примером</button><a class="btn btn-ghost" href="register.html">Создать профиль</a></div>
       </div>
       <aside class="card pad">
         <p class="eyebrow">Проблема</p>
@@ -85,6 +85,8 @@
 </main>
 <div id="paywallModal" class="modal hidden"><div class="modal-card"><button id="closePaywallBtn" class="close">×</button><p class="eyebrow">Free-лимит</p><h2>Бесплатный план ограничен</h2><p>Free позволяет добавить до 5 задач на день и планировать только ближайшие 3 дня.</p><div class="actions"><a class="btn btn-primary" href="pricing.html">Посмотреть тарифы</a><button class="btn btn-secondary" id="stayFreeBtn">Остаться на Free</button></div></div></div>
 <div id="toast" class="toast hidden"></div>
+<script src="auth-bootstrap.js"></script>
+<script src="form-hardening.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
