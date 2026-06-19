@@ -23,13 +23,19 @@
 
     const profileRaw = localStorage.getItem('timeguard_profile_v1');
     const profile = profileRaw ? JSON.parse(profileRaw) : {};
-    await TimeGuardSupabase.upsertProfile({
+    const profileResult = await TimeGuardSupabase.upsertProfile({
       id: session.user.id,
       email: session.user.email,
       full_name: profile.name || session.user.user_metadata?.name || 'TimeGuard User',
       role: profile.role || 'user',
       plan: profile.plan || 'free'
     });
+
+    if (profileResult?.error) {
+      console.error('TimeGuard profile sync error:', profileResult.error);
+      say(`Ошибка профиля Supabase: ${profileResult.error.message}`);
+      return;
+    }
 
     const tasks = JSON.parse(localStorage.getItem('timeguard_tasks_v1') || '[]');
     if (!tasks.length) {
@@ -39,6 +45,8 @@
 
     let ok = 0;
     let failed = 0;
+    let lastError = '';
+
     for (const item of tasks) {
       const payload = {
         user_id: session.user.id,
@@ -52,16 +60,32 @@
         notes: item.notes || '',
         done: Boolean(item.done)
       };
-      const { error } = await TimeGuardSupabase.client.from('tasks').upsert(payload, { onConflict: 'user_id,local_id' });
-      if (error) {
+
+      let result = await TimeGuardSupabase.client
+        .from('tasks')
+        .upsert(payload, { onConflict: 'user_id,local_id' });
+
+      if (result.error && String(result.error.message || '').includes('local_id')) {
+        const fallbackPayload = { ...payload };
+        delete fallbackPayload.local_id;
+        result = await TimeGuardSupabase.client.from('tasks').insert(fallbackPayload);
+      }
+
+      if (result.error) {
         failed += 1;
-        console.error('TimeGuard Supabase sync error:', error);
+        lastError = result.error.message || 'unknown error';
+        console.error('TimeGuard Supabase sync error:', result.error);
       } else {
         ok += 1;
       }
     }
 
-    say(`Синхронизация завершена: ${ok} задач отправлено в Supabase, ошибок: ${failed}.`);
+    if (failed) {
+      say(`Синхронизация частично выполнена: ${ok} задач отправлено, ошибок: ${failed}. Последняя ошибка: ${lastError}`);
+      return;
+    }
+
+    say(`Синхронизация завершена: ${ok} задач отправлено в Supabase, ошибок: 0.`);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
