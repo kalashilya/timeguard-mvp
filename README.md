@@ -4,6 +4,11 @@
 
 Сервис помогает пользователю составлять реалистичный план дня: добавлять задачи, сортировать их по времени и заранее видеть предупреждение, если дела пересекаются друг с другом.
 
+## Live demo
+
+Ссылка на опубликованный MVP:  
+`https://kalashilya.github.io/timeguard-mvp/`
+
 ## Идея
 
 Обычные списки дел не проверяют, можно ли реально выполнить план. Пользователь может поставить две задачи на одно время и заметить это слишком поздно. TimeGuard проверяет расписание до сохранения задачи.
@@ -55,6 +60,7 @@ projects/timeguard/analytics.md
 projects/timeguard/deploy.md
 projects/timeguard/test-plan.md
 projects/timeguard/presentation-outline.md
+projects/timeguard/defense-cheatsheet.md
 ```
 
 ## Демо-сценарий
