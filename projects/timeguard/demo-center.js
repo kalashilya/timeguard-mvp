@@ -24,7 +24,7 @@
     if (demoCleared) {
       if ($('sessionStatus')) $('sessionStatus').textContent = 'не проверялось';
       if ($('cloudTaskCount')) $('cloudTaskCount').textContent = '—';
-      say('Демо-данные очищены. Теперь можно показать создание профиля и задач с нуля.', 'ok');
+      say('Пример очищен. Можно создать профиль и задачи с нуля.', 'ok');
       return;
     }
 
@@ -39,7 +39,7 @@
     if (!session?.user) {
       if ($('sessionStatus')) $('sessionStatus').textContent = 'Нет входа';
       if ($('cloudTaskCount')) $('cloudTaskCount').textContent = '—';
-      const prefix = seedJustDone ? 'Демо-данные подготовлены. ' : '';
+      const prefix = seedJustDone ? 'Пример подготовлен. ' : '';
       say(`${prefix}Локальная часть готова: ${localTasks.length} задач. Для cloud-проверки нужно войти через Supabase.`, localTasks.length ? 'ok' : 'bad');
       return;
     }
@@ -57,8 +57,8 @@
     }
 
     if ($('cloudTaskCount')) $('cloudTaskCount').textContent = result.count ?? 0;
-    const prefix = seedJustDone ? 'Демо-данные подготовлены. ' : '';
-    say(`${prefix}MVP готов к показу: локальных задач ${localTasks.length}, задач в Supabase ${result.count ?? 0}.`, 'ok');
+    const prefix = seedJustDone ? 'Пример подготовлен. ' : '';
+    say(`${prefix}TimeGuard готов: локальных задач ${localTasks.length}, задач в Supabase ${result.count ?? 0}.`, 'ok');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
