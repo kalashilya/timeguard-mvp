@@ -2,13 +2,12 @@
 
 ## Live links
 
-- Main site: `https://kalashilya.github.io/timeguard-mvp/`
-- Demo Center: `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/demo-center.html?v=10`
-- Pitch: `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pitch.html?v=9`
-- Planner: `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/app.html?v=6`
-- Cabinet: `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cabinet.html?v=7`
-- Cloud tasks: `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cloud.html?v=7`
-- Pricing: `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pricing.html`
+- Render main site: `https://timeguard-mvp.onrender.com`
+- Render Demo Center: `https://timeguard-mvp.onrender.com/demo`
+- Render Pitch: `https://timeguard-mvp.onrender.com/pitch`
+- Render Planner: `https://timeguard-mvp.onrender.com/planner`
+- Render Cloud tasks: `https://timeguard-mvp.onrender.com/cloud`
+- GitHub Pages backup: `https://kalashilya.github.io/timeguard-mvp/`
 
 ## Project summary
 
@@ -41,6 +40,7 @@ The user does not just store tasks. The user checks whether the day plan is real
 - RLS policies;
 - Supabase CLI config;
 - migrations and seed file;
+- Render deployment;
 - sync to Supabase;
 - cloud page that reads tasks from Supabase;
 - metrics and validation document;
@@ -49,8 +49,8 @@ The user does not just store tasks. The user checks whether the day plan is real
 
 ## Defense route
 
-1. Open the main site.
-2. Go to Demo Center.
+1. Open the Render main site.
+2. Go to Demo Center: `https://timeguard-mvp.onrender.com/demo`.
 3. Click "Prepare demo data".
 4. Click "Check MVP status".
 5. Open Pitch and explain problem, user and value.
@@ -64,13 +64,14 @@ The user does not just store tasks. The user checks whether the day plan is real
 
 ## What to say in 40 seconds
 
-TimeGuard Planner is an educational MVP of a smart daily planner. The problem is that ordinary todo-lists store tasks but do not check whether the schedule is realistic. A user can easily put two tasks at the same time. TimeGuard solves this by checking date and time before saving the task. The project includes profile flow, task planner, conflict validation, progress, filters, weekly overview, export, pricing scenario, Supabase Auth, SQL schema, RLS policies, synchronization and a cloud page that reads tasks back from the database.
+TimeGuard Planner is an educational MVP of a smart daily planner. The problem is that ordinary todo-lists store tasks but do not check whether the schedule is realistic. A user can easily put two tasks at the same time. TimeGuard solves this by checking date and time before saving the task. The project includes profile flow, task planner, conflict validation, progress, filters, weekly overview, export, pricing scenario, Supabase Auth, SQL schema, RLS policies, synchronization and a cloud page that reads tasks back from the database. The project is published on Render and also has GitHub Pages as a backup.
 
 ## What is real and what is demo
 
 Real:
 
-- live GitHub Pages site;
+- live Render site;
+- live GitHub Pages backup;
 - planner logic;
 - Supabase Auth;
 - Supabase tasks table;
