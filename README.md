@@ -6,7 +6,6 @@
 
 ## Live demo
 
-Ссылка на опубликованный MVP:  
 `https://kalashilya.github.io/timeguard-mvp/`
 
 ## Идея
@@ -27,93 +26,83 @@
 
 ## Домашние задания и артефакты
 
-| # | Тема | Документ | Промпт | Статус |
-|---|------|----------|--------|--------|
-| 1 | Проблема, ЦА, ценность MVP | `notes/hw1-problem-audience-value.md` | `prompts/01-idea-generation.md` | done |
-| 2 | Пользователь, функции, user flow | `notes/hw2-user-functions-userflow.md` | `prompts/02.md` | done |
-| 3 | Лендинг и интерактивный сценарий | `notes/hw3-landing-interactive.md` | `prompts/03.md` | done |
-| 4 | Улучшение структуры MVP | `projects/timeguard/components-map.md` | — | done |
-| 5 | Тестирование MVP | `projects/timeguard/test-plan.md` | — | done |
-| 6 | Данные | `projects/timeguard/data-model.md` | — | done |
-| 7 | Роли и кабинет | `projects/timeguard/README.md` | — | done |
-| 8 | Публикация | `projects/timeguard/deploy.md` | — | done |
-| 9 | Аналитика | `projects/timeguard/analytics.md` | — | done |
-| 10 | Тарифный сценарий | `notes/hw10-paywall.md` | — | done |
-| 11 | Безопасность MVP | `notes/hw11-security.md` | — | done |
-| 12 | Демонстрация MVP | `projects/timeguard/demo-exam-scenario.md` | — | done |
+| # | Тема | Документ | Статус |
+|---|------|----------|--------|
+| 1 | Проблема, ЦА, ценность MVP | `notes/hw1-problem-audience-value.md` | done |
+| 2 | Пользователь, функции, user flow | `notes/hw2-user-functions-userflow.md` | done |
+| 3 | Лендинг и интерактивный сценарий | `notes/hw3-landing-interactive.md` | done |
+| 4 | Компоненты и структура | `projects/timeguard/components-map.md` | done |
+| 5 | Тестирование | `projects/timeguard/test-plan.md` | done |
+| 6 | Данные и Supabase | `projects/timeguard/supabase/schema.sql` | done |
+| 7 | Роли и кабинет | `projects/timeguard/README.md` | done |
+| 8 | Публикация | `projects/timeguard/deploy.md` | done |
+| 9 | Аналитика | `projects/timeguard/analytics.md` | done |
+| 10 | Тарифный сценарий | `notes/hw10-paywall.md` | done |
+| 11 | Безопасность MVP | `notes/hw11-security.md` | done |
+| 12 | Демонстрация MVP | `projects/timeguard/demo-exam-scenario.md` | done |
 
 ## Что реализовано
 
-- лендинг с описанием продукта;
-- учебный профиль пользователя;
-- отдельный auth flow: register и verify;
+- лендинг и основной планировщик;
+- профиль, register/login/verify flow;
 - добавление задач на дату;
-- выбор времени начала и окончания;
-- приоритет и категория;
-- проверка пересечений;
+- проверка пересечений по времени;
 - сортировка задач;
-- сохранение в `localStorage`;
-- кабинет с планами;
-- роли `guest`, `user`, `admin`;
-- Free-лимит;
-- учебный тарифный сценарий;
-- helper-файлы `auth-bootstrap.js` и `form-hardening.js`;
-- Supabase-план для следующей версии;
+- кабинет;
+- Free-лимит и тарифный сценарий;
+- Supabase Auth и синхронизация задач;
+- SQL-схема, RLS и sample data;
+- прогресс выполнения задач;
+- фильтры по категории и приоритету;
+- недельный обзор;
+- экспорт плана в TXT и JSON;
 - документы для защиты.
 
 ## Стек
 
-HTML, CSS, JavaScript, localStorage, GitHub Pages.
+HTML, CSS, JavaScript, localStorage, GitHub Pages, Supabase.
 
 ## Структура
 
 ```text
 index.html
-.nojekyll
 notes/
 prompts/
-docs/final-checklist.md
+docs/
 projects/timeguard/app.html
 projects/timeguard/app.css
 projects/timeguard/app.js
+projects/timeguard/product-upgrades.js
 projects/timeguard/auth-bootstrap.js
 projects/timeguard/form-hardening.js
+projects/timeguard/supabase-adapter.js
+projects/timeguard/supabase-sync.js
+projects/timeguard/supabase-settings.js
 projects/timeguard/register.html
+projects/timeguard/login.html
 projects/timeguard/verify-step.html
 projects/timeguard/cabinet.html
 projects/timeguard/pricing.html
 projects/timeguard/payment-success.html
 projects/timeguard/admin.html
-projects/timeguard/README.md
-projects/timeguard/open-local.md
-projects/timeguard/demo-exam-scenario.md
-projects/timeguard/security-checklist.md
-projects/timeguard/analytics.md
-projects/timeguard/deploy.md
-projects/timeguard/test-plan.md
-projects/timeguard/presentation-outline.md
-projects/timeguard/defense-cheatsheet.md
-projects/timeguard/user-flow.md
-projects/timeguard/ui-map.md
-projects/timeguard/components-map.md
-projects/timeguard/release-plan.md
-projects/timeguard/data-model.md
-projects/timeguard/data-next.md
 projects/timeguard/supabase/
 ```
 
 ## Демо-сценарий
 
 1. Открыть сайт.
-2. Создать учебный профиль.
+2. Создать профиль.
 3. Добавить несколько задач.
 4. Показать сортировку.
 5. Добавить задачу с пересечением.
 6. Показать предупреждение.
-7. Открыть кабинет.
-8. Показать Free-лимит и тарифы.
-9. Активировать учебный тариф.
+7. Отметить задачу выполненной.
+8. Показать прогресс, фильтры и недельный обзор.
+9. Экспортировать план.
+10. Открыть кабинет.
+11. Синхронизировать задачи с Supabase.
+12. Показать Free-лимит и тарифы.
 
 ## Ограничение MVP
 
-Данные хранятся в браузере через localStorage. Реальную авторизацию, серверную базу и оплату можно добавить на следующем этапе через Supabase/Firebase.
+Проект остаётся учебным MVP. Основной сценарий работает на frontend, а Supabase используется для демонстрации реальной базы, auth-flow и синхронизации задач.
