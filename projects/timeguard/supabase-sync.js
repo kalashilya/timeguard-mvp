@@ -11,13 +11,13 @@
     };
 
     if (!window.TimeGuardSupabase?.ready) {
-      say('Supabase is not configured yet.');
+      say('Supabase не настроен. Проверьте supabase-settings.js.');
       return;
     }
 
     const session = await TimeGuardSupabase.getSession();
     if (!session?.user) {
-      say('Please register or log in first.');
+      say('Сначала зарегистрируйтесь или войдите через Supabase.');
       return;
     }
 
@@ -32,7 +32,13 @@
     });
 
     const tasks = JSON.parse(localStorage.getItem('timeguard_tasks_v1') || '[]');
+    if (!tasks.length) {
+      say('Supabase подключён, профиль найден, но локальных задач пока нет. Откройте планировщик, добавьте 1–2 задачи и снова нажмите синхронизацию.');
+      return;
+    }
+
     let ok = 0;
+    let failed = 0;
     for (const item of tasks) {
       const payload = {
         user_id: session.user.id,
@@ -47,10 +53,15 @@
         done: Boolean(item.done)
       };
       const { error } = await TimeGuardSupabase.client.from('tasks').upsert(payload, { onConflict: 'user_id,local_id' });
-      if (!error) ok += 1;
+      if (error) {
+        failed += 1;
+        console.error('TimeGuard Supabase sync error:', error);
+      } else {
+        ok += 1;
+      }
     }
 
-    say(`Synced ${ok} task(s) with Supabase.`);
+    say(`Синхронизация завершена: ${ok} задач отправлено в Supabase, ошибок: ${failed}.`);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
