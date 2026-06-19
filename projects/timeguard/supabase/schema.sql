@@ -28,9 +28,10 @@ create table if not exists tasks (
   constraint valid_task_time check (end_time > start_time)
 );
 
-create unique index if not exists idx_tasks_user_local_id
-on tasks(user_id, local_id)
-where local_id is not null;
+alter table tasks add column if not exists local_id text;
+drop index if exists idx_tasks_user_local_id;
+alter table tasks drop constraint if exists tasks_user_local_id_unique;
+alter table tasks add constraint tasks_user_local_id_unique unique (user_id, local_id);
 
 create table if not exists task_events (
   id uuid primary key default gen_random_uuid(),
@@ -45,14 +46,17 @@ alter table tasks enable row level security;
 alter table task_events enable row level security;
 
 drop policy if exists "profiles_select_own_or_admin" on profiles;
+drop policy if exists "profiles_select_own" on profiles;
 drop policy if exists "profiles_insert_own" on profiles;
 drop policy if exists "profiles_update_own" on profiles;
 drop policy if exists "tasks_select_own_or_admin" on tasks;
+drop policy if exists "tasks_select_own" on tasks;
 drop policy if exists "tasks_insert_own" on tasks;
 drop policy if exists "tasks_update_own" on tasks;
 drop policy if exists "tasks_delete_own" on tasks;
 drop policy if exists "events_insert_own" on task_events;
 drop policy if exists "events_select_own_or_admin" on task_events;
+drop policy if exists "events_select_own" on task_events;
 
 create policy "profiles_select_own"
 on profiles for select
