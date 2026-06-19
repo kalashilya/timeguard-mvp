@@ -1,18 +1,23 @@
-# HW11. MVP security
+# HW11 — Безопасность MVP
 
-## Implemented checks
+## Реализованные проверки
 
-- required fields;
-- end time must be later than start time;
-- overlap detection;
-- human confirmation checkbox;
-- submit cooldown;
-- admin page role check.
+- обязательные поля формы;
+- окончание задачи должно быть позже начала;
+- проверка пересечения задач по времени;
+- чекбокс подтверждения перед сохранением;
+- cooldown между отправками формы;
+- ограничение Free-плана;
+- проверка роли для admin-страницы.
 
-## Current limitation
+## Что это защищает
 
-This is a frontend MVP. Security checks are useful for the demo, but a real product must validate critical actions on the server.
+Эти проверки уменьшают риск ошибочного ввода, случайных повторных кликов и добавления невыполнимого плана дня.
 
-## Next step
+## Ограничение текущей версии
 
-Move profile, tasks, roles and plan status to a backend service with database rules.
+Это frontend MVP. Проверки полезны для демонстрации и учебной версии, но настоящий продукт должен проверять критические действия на сервере.
+
+## Следующий этап
+
+Перенести профиль, задачи, роли и тарифный статус в backend-сервис с базой данных, правилами доступа и серверной валидацией.
