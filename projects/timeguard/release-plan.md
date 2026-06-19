@@ -1,32 +1,37 @@
-# Release plan
+# Release plan TimeGuard Planner
 
-## Release 1
+## Release 1 — Учебный MVP
 
-- landing page;
-- profile form;
-- task form;
-- task sorting;
-- overlap validation;
-- browser storage.
+- лендинг;
+- форма профиля;
+- форма добавления задач;
+- проверка пересечений;
+- сортировка задач;
+- сохранение в localStorage;
+- кабинет;
+- тарифный экран;
+- учебная admin-сводка.
 
-## Release 2
+## Release 2 — Улучшение UX
 
-- user cabinet;
-- saved days;
-- user and admin roles;
-- admin summary.
+- недельный календарь;
+- drag-and-drop задач;
+- шаблоны дней;
+- быстрые категории;
+- улучшенные статусы задач.
 
-## Release 3
-
-- free limits;
-- pricing page;
-- plan activation flow;
-- better error messages.
-
-## Release 4
+## Release 3 — Backend
 
 - Supabase Auth;
-- task database;
-- RLS;
-- weekly calendar;
-- product analytics.
+- таблица профилей;
+- таблица задач;
+- RLS-политики;
+- серверная проверка тарифов и ролей.
+
+## Release 4 — Продуктовое развитие
+
+- совместные планы;
+- уведомления;
+- интеграция с календарями;
+- аналитика поведения;
+- платные командные функции.
