@@ -14,7 +14,19 @@
 
   async function runHealthCheck() {
     const localTasks = readTasks();
+    const seedJustDone = sessionStorage.getItem('timeguard_seed_just_done') === '1';
+    const demoCleared = sessionStorage.getItem('timeguard_demo_cleared') === '1';
+    sessionStorage.removeItem('timeguard_seed_just_done');
+    sessionStorage.removeItem('timeguard_demo_cleared');
+
     if ($('localTaskCount')) $('localTaskCount').textContent = localTasks.length;
+
+    if (demoCleared) {
+      if ($('sessionStatus')) $('sessionStatus').textContent = 'не проверялось';
+      if ($('cloudTaskCount')) $('cloudTaskCount').textContent = '—';
+      say('Демо-данные очищены. Теперь можно показать создание профиля и задач с нуля.', 'ok');
+      return;
+    }
 
     if (!window.TimeGuardSupabase?.ready) {
       if ($('sessionStatus')) $('sessionStatus').textContent = 'Supabase не настроен';
@@ -27,7 +39,8 @@
     if (!session?.user) {
       if ($('sessionStatus')) $('sessionStatus').textContent = 'Нет входа';
       if ($('cloudTaskCount')) $('cloudTaskCount').textContent = '—';
-      say(`Локальная часть готова: ${localTasks.length} задач. Для cloud-проверки нужно войти через Supabase.`, localTasks.length ? 'ok' : 'bad');
+      const prefix = seedJustDone ? 'Демо-данные подготовлены. ' : '';
+      say(`${prefix}Локальная часть готова: ${localTasks.length} задач. Для cloud-проверки нужно войти через Supabase.`, localTasks.length ? 'ok' : 'bad');
       return;
     }
 
@@ -44,7 +57,8 @@
     }
 
     if ($('cloudTaskCount')) $('cloudTaskCount').textContent = result.count ?? 0;
-    say(`MVP готов к показу: локальных задач ${localTasks.length}, задач в Supabase ${result.count ?? 0}.`, 'ok');
+    const prefix = seedJustDone ? 'Демо-данные подготовлены. ' : '';
+    say(`${prefix}MVP готов к показу: локальных задач ${localTasks.length}, задач в Supabase ${result.count ?? 0}.`, 'ok');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
