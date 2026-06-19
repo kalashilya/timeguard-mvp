@@ -1,7 +1,14 @@
 (() => {
   async function syncLocalTasks() {
     const resultBox = document.getElementById('syncResult');
-    const say = (text) => { if (resultBox) resultBox.textContent = text; else alert(text); };
+    const say = (text) => {
+      if (resultBox) {
+        resultBox.textContent = text;
+        resultBox.classList.remove('hidden');
+      } else {
+        alert(text);
+      }
+    };
 
     if (!window.TimeGuardSupabase?.ready) {
       say('Supabase is not configured yet.');
