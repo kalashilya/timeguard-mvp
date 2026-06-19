@@ -30,9 +30,9 @@
 | # | Тема | Документ | Промпт | Статус |
 |---|------|----------|--------|--------|
 | 1 | Проблема, ЦА, ценность MVP | `notes/hw1-problem-audience-value.md` | `prompts/01-idea-generation.md` | done |
-| 2 | Пользователь, функции, user flow | `notes/hw2-user-functions-userflow.md` | `prompts/02-mvp-scope.md` | done |
-| 3 | Лендинг и интерактивный сценарий | `notes/hw3-landing-interactive.md` | `prompts/03-code-generation.md` | done |
-| 4 | Улучшение структуры MVP | `projects/timeguard/components-map.md` | `prompts/04-final-packaging.md` | done |
+| 2 | Пользователь, функции, user flow | `notes/hw2-user-functions-userflow.md` | `prompts/02.md` | done |
+| 3 | Лендинг и интерактивный сценарий | `notes/hw3-landing-interactive.md` | `prompts/03.md` | done |
+| 4 | Улучшение структуры MVP | `projects/timeguard/components-map.md` | — | done |
 | 5 | Тестирование MVP | `projects/timeguard/test-plan.md` | — | done |
 | 6 | Данные | `projects/timeguard/data-model.md` | — | done |
 | 7 | Роли и кабинет | `projects/timeguard/README.md` | — | done |
@@ -46,6 +46,7 @@
 
 - лендинг с описанием продукта;
 - учебный профиль пользователя;
+- отдельный auth flow: register и verify;
 - добавление задач на дату;
 - выбор времени начала и окончания;
 - приоритет и категория;
@@ -56,7 +57,8 @@
 - роли `guest`, `user`, `admin`;
 - Free-лимит;
 - учебный тарифный сценарий;
-- базовая защита от повторных кликов;
+- helper-файлы `auth-bootstrap.js` и `form-hardening.js`;
+- Supabase-план для следующей версии;
 - документы для защиты.
 
 ## Стек
@@ -70,9 +72,14 @@ index.html
 .nojekyll
 notes/
 prompts/
+docs/final-checklist.md
 projects/timeguard/app.html
 projects/timeguard/app.css
 projects/timeguard/app.js
+projects/timeguard/auth-bootstrap.js
+projects/timeguard/form-hardening.js
+projects/timeguard/register.html
+projects/timeguard/verify-step.html
 projects/timeguard/cabinet.html
 projects/timeguard/pricing.html
 projects/timeguard/payment-success.html
@@ -87,11 +94,12 @@ projects/timeguard/test-plan.md
 projects/timeguard/presentation-outline.md
 projects/timeguard/defense-cheatsheet.md
 projects/timeguard/user-flow.md
-projects/timeguard/screens.md
+projects/timeguard/ui-map.md
 projects/timeguard/components-map.md
 projects/timeguard/release-plan.md
 projects/timeguard/data-model.md
 projects/timeguard/data-next.md
+projects/timeguard/supabase/
 ```
 
 ## Демо-сценарий
