@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard Planner</title>
-  <link rel="stylesheet" href="app.css?v=11">
+  <link rel="stylesheet" href="app.css?v=12">
 </head>
 <body data-page="app">
 <header class="header">
   <div class="container header-inner">
-    <a class="brand" href="demo-center.html?v=11"><span class="logo">T</span><span>TimeGuard<br><small>умный планировщик дня</small></span></a>
-    <nav class="nav"><a href="demo-center.html?v=11">Demo</a><a href="pitch.html?v=9">Pitch</a><a href="#planner">Планировщик</a><a href="cabinet.html?v=11">Кабинет</a><a href="cloud.html?v=11">Cloud</a><a href="pricing.html?v=11">Тарифы</a></nav>
+    <a class="brand" href="../../index.html"><span class="logo">T</span><span>TimeGuard<br><small>planner</small></span></a>
+    <nav class="nav"><a href="demo-center.html?v=12">Обзор</a><a href="pitch.html?v=12">О продукте</a><a href="cabinet.html?v=12">Кабинет</a><a href="cloud.html?v=12">Cloud</a><a href="login.html?v=12">Войти</a><a class="btn btn-primary" href="register.html?v=12">Регистрация</a></nav>
   </div>
 </header>
 <main>
@@ -20,7 +20,7 @@
         <p class="eyebrow">TimeGuard Planner</p>
         <h1><span class="gradient-text">Реалистичный план</span> без пересечений</h1>
         <p class="lead">Добавляйте дела на сегодня и будущие даты. TimeGuard сортирует задачи и предупреждает, если два дела стоят на одно время.</p>
-        <div class="actions"><a class="btn btn-primary" href="#planner">Начать планирование</a><button class="btn btn-secondary" id="fillDemoBtn">Заполнить примером</button><a class="btn btn-ghost" href="register.html?v=11">Создать профиль</a></div>
+        <div class="actions"><a class="btn btn-primary" href="#planner">Начать планирование</a><button class="btn btn-secondary" id="fillDemoBtn">Заполнить примером</button><a class="btn btn-ghost" href="register.html?v=12">Создать аккаунт</a><a class="btn btn-ghost" href="login.html?v=12">Войти</a></div>
       </div>
       <aside class="card pad">
         <p class="eyebrow">Проблема</p>
@@ -31,11 +31,11 @@
   </section>
   <section class="section" id="value">
     <div class="container">
-      <h2>Ценность MVP</h2>
+      <h2>Ценность продукта</h2>
       <div class="cards">
         <article class="card small-card"><div class="feature-icon">📅</div><h3>План на день</h3><p>Задачи группируются по датам.</p></article>
         <article class="card small-card"><div class="feature-icon">⚠️</div><h3>Проверка конфликтов</h3><p>Пересечения блокируются до сохранения.</p></article>
-        <article class="card small-card"><div class="feature-icon">💳</div><h3>Free-лимит</h3><p>Есть учебный тарифный сценарий.</p></article>
+        <article class="card small-card"><div class="feature-icon">💳</div><h3>Free-лимит</h3><p>Есть тарифный сценарий Free, Plus и Team.</p></article>
       </div>
     </div>
   </section>
@@ -47,7 +47,7 @@
           <form id="profileForm" class="stack">
             <label class="field"><span>Имя</span><input id="profileName" placeholder="Илья"></label>
             <label class="field"><span>Email</span><input id="profileEmail" type="email" placeholder="name@example.com"></label>
-            <label class="field"><span>Роль для демонстрации</span><select id="profileRole"><option value="user">user</option><option value="admin">admin</option></select></label>
+            <label class="field"><span>Роль</span><select id="profileRole"><option value="user">user</option><option value="admin">admin</option></select></label>
             <button class="btn btn-primary" type="submit">Сохранить профиль</button>
           </form>
           <div id="profileSummary" class="alert hidden"></div>
@@ -83,7 +83,7 @@
     </div>
   </section>
 </main>
-<div id="paywallModal" class="modal hidden"><div class="modal-card"><button id="closePaywallBtn" class="close">×</button><p class="eyebrow">Free-лимит</p><h2>Бесплатный план ограничен</h2><p>Free позволяет добавить до 5 задач на день и планировать только ближайшие 3 дня.</p><div class="actions"><a class="btn btn-primary" href="pricing.html?v=11">Посмотреть тарифы</a><button class="btn btn-secondary" id="stayFreeBtn">Остаться на Free</button></div></div></div>
+<div id="paywallModal" class="modal hidden"><div class="modal-card"><button id="closePaywallBtn" class="close">×</button><p class="eyebrow">Free-лимит</p><h2>Бесплатный план ограничен</h2><p>Free позволяет добавить до 5 задач на день и планировать только ближайшие 3 дня.</p><div class="actions"><a class="btn btn-primary" href="pricing.html?v=12">Посмотреть тарифы</a><button class="btn btn-secondary" id="stayFreeBtn">Остаться на Free</button></div></div></div>
 <div id="toast" class="toast hidden"></div>
 <script src="auth-bootstrap.js?v=10"></script>
 <script src="form-hardening.js?v=10"></script>
