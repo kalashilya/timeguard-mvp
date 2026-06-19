@@ -4,12 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard Planner</title>
+  <link rel="stylesheet" href="projects/timeguard/app.css?v=8">
 </head>
 <body>
-  <main style="font-family: Arial, sans-serif; padding: 40px;">
-    <h1>TimeGuard Planner</h1>
-    <p>Учебный MVP-проект для планирования дня без конфликтов времени.</p>
-    <a href="projects/timeguard/app.html">Открыть приложение</a>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo">T</span><span>TimeGuard<br><small>учебный MVP</small></span></a>
+      <nav class="nav"><a href="projects/timeguard/demo-center.html?v=8">Demo Center</a><a href="projects/timeguard/app.html?v=6">Планировщик</a><a href="projects/timeguard/cloud.html?v=7">Cloud</a></nav>
+    </div>
+  </header>
+  <main class="hero">
+    <div class="container grid">
+      <section class="card pad">
+        <p class="eyebrow">TimeGuard Planner</p>
+        <h1>Учебный MVP для планирования дня без конфликтов времени</h1>
+        <p class="lead">Приложение помогает добавлять задачи, проверять пересечения, видеть прогресс, экспортировать план и синхронизировать данные с Supabase.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="projects/timeguard/demo-center.html?v=8">Открыть Demo Center</a>
+          <a class="btn btn-secondary" href="projects/timeguard/app.html?v=6">Открыть приложение</a>
+          <a class="btn btn-ghost" href="projects/timeguard/register.html">Создать профиль</a>
+        </div>
+      </section>
+      <aside class="card pad">
+        <p class="eyebrow">Что внутри</p>
+        <h2>MVP + Supabase + защита</h2>
+        <p class="lead">Лендинг, планировщик, кабинет, cloud-страница, тарифы, SQL-схема, RLS и документы для демонстрации.</p>
+      </aside>
+    </div>
   </main>
 </body>
 </html>
