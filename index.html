@@ -4,33 +4,108 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard Planner</title>
-  <link rel="stylesheet" href="projects/timeguard/app.css?v=10">
+  <link rel="stylesheet" href="projects/timeguard/app.css?v=11">
 </head>
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a class="brand" href="index.html"><span class="logo">T</span><span>TimeGuard<br><small>учебный MVP</small></span></a>
-      <nav class="nav"><a href="projects/timeguard/demo-center.html?v=10">Demo Center</a><a href="projects/timeguard/pitch.html?v=9">Pitch</a><a href="projects/timeguard/app.html?v=10">Планировщик</a><a href="projects/timeguard/cloud.html?v=10">Cloud</a></nav>
+      <a class="brand" href="index.html"><span class="logo">T</span><span>TimeGuard<br><small>финальный MVP</small></span></a>
+      <nav class="nav"><a href="projects/timeguard/demo-center.html?v=10">Demo Center</a><a href="projects/timeguard/pitch.html?v=9">Pitch</a><a href="projects/timeguard/app.html?v=11">Planner</a><a href="projects/timeguard/cloud.html?v=10">Cloud</a></nav>
     </div>
   </header>
-  <main class="hero">
-    <div class="container grid">
-      <section class="card pad">
-        <p class="eyebrow">TimeGuard Planner</p>
-        <h1>Учебный MVP для планирования дня без конфликтов времени</h1>
-        <p class="lead">Приложение помогает добавлять задачи, проверять пересечения, видеть прогресс, экспортировать план и синхронизировать данные с Supabase.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="projects/timeguard/demo-center.html?v=10">Открыть Demo Center</a>
-          <a class="btn btn-secondary" href="projects/timeguard/app.html?v=10">Открыть приложение</a>
-          <a class="btn btn-ghost" href="projects/timeguard/register.html?v=10">Создать профиль</a>
+
+  <main>
+    <section class="hero">
+      <div class="container grid">
+        <section class="card pad glow">
+          <p class="eyebrow">TimeGuard Planner</p>
+          <h1><span class="gradient-text">План дня</span> без хаоса и пересечений</h1>
+          <p class="lead">TimeGuard помогает собрать реалистичное расписание: добавить задачи, проверить конфликты времени, увидеть прогресс, экспортировать план и синхронизировать данные с Supabase.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="projects/timeguard/demo-center.html?v=10">Открыть Demo Center</a>
+            <a class="btn btn-secondary" href="projects/timeguard/app.html?v=11">Запустить Planner</a>
+            <a class="btn btn-ghost" href="projects/timeguard/pitch.html?v=9">Посмотреть Pitch</a>
+          </div>
+          <div class="hero-showcase">
+            <div class="metric"><strong>5+</strong><span>ключевых экранов MVP</span></div>
+            <div class="metric"><strong>RLS</strong><span>защита данных в Supabase</span></div>
+          </div>
+        </section>
+
+        <aside class="card pad mockup">
+          <div>
+            <p class="eyebrow">Live product preview</p>
+            <h2>Сегодня</h2>
+            <p class="lead">Система видит конфликт до того, как план станет невыполнимым.</p>
+          </div>
+          <div class="mockup-window">
+            <div class="mockup-row"><span class="mockup-time">10:00</span><span class="mockup-title">Разобрать проект</span><span class="mockup-chip">done</span></div>
+            <div class="mockup-row"><span class="mockup-time">12:00</span><span class="mockup-title">Supabase sync</span><span class="mockup-chip">high</span></div>
+            <div class="mockup-row"><span class="mockup-time">12:30</span><span class="mockup-title">Конфликт времени</span><span class="mockup-chip warn">blocked</span></div>
+            <div class="mockup-row"><span class="mockup-time">16:00</span><span class="mockup-title">Репетиция защиты</span><span class="mockup-chip">plan</span></div>
+          </div>
+          <div>
+            <div class="mockup-progress"><span></span></div>
+            <p class="lead" style="margin-top:10px">68% плана под контролем</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="kpi-grid">
+          <div class="kpi"><strong>MVP</strong><span>готов к показу</span></div>
+          <div class="kpi"><strong>Auth</strong><span>Supabase login/register</span></div>
+          <div class="kpi"><strong>Cloud</strong><span>задачи из базы</span></div>
+          <div class="kpi"><strong>Docs</strong><span>защита и Q&A</span></div>
         </div>
-      </section>
-      <aside class="card pad">
-        <p class="eyebrow">Что внутри</p>
-        <h2>MVP + Supabase + защита</h2>
-        <p class="lead">Лендинг, планировщик, кабинет, cloud-страница, тарифы, SQL-схема, RLS и документы для демонстрации.</p>
-      </aside>
-    </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <div><p class="eyebrow">Как работает</p><h2>Один понятный сценарий от задачи до cloud-базы</h2></div>
+          <p>Проект показывает не только интерфейс, но и полный путь данных: браузер, кабинет, Supabase и обратное чтение на Cloud-странице.</p>
+        </div>
+        <div class="cards">
+          <article class="card small-card"><div class="step-number">1</div><h3>Добавить задачи</h3><p class="lead">Пользователь выбирает дату, время, приоритет, категорию и комментарий.</p></article>
+          <article class="card small-card"><div class="step-number">2</div><h3>Проверить конфликт</h3><p class="lead">Если новая задача пересекается со старой, TimeGuard блокирует сохранение.</p></article>
+          <article class="card small-card"><div class="step-number">3</div><h3>Синхронизировать</h3><p class="lead">Кабинет отправляет задачи в Supabase, а Cloud-страница читает их обратно.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <div><p class="eyebrow">Что внутри</p><h2>Функции, которые делают MVP похожим на продукт</h2></div>
+        </div>
+        <div class="cards">
+          <article class="card small-card"><div class="feature-icon">⚡</div><h3>Проверка времени</h3><p class="lead">Главная логика — не дать пользователю сохранить невыполнимое расписание.</p></article>
+          <article class="card small-card"><div class="feature-icon">📊</div><h3>Прогресс и фильтры</h3><p class="lead">Видно, сколько задач выполнено, какие приоритеты и категории активны.</p></article>
+          <article class="card small-card"><div class="feature-icon">☁️</div><h3>Supabase Cloud</h3><p class="lead">Auth, profiles, tasks, RLS, sync и отдельная cloud-страница.</p></article>
+          <article class="card small-card"><div class="feature-icon">📁</div><h3>Экспорт</h3><p class="lead">План можно выгрузить в TXT и JSON для демонстрации или дальнейшей обработки.</p></article>
+          <article class="card small-card"><div class="feature-icon">💳</div><h3>Тарифный сценарий</h3><p class="lead">Free, Plus и Team показывают будущую модель монетизации.</p></article>
+          <article class="card small-card"><div class="feature-icon">🛡️</div><h3>Защита и документация</h3><p class="lead">Есть RLS, checklist, test-plan, teacher script, Q&A и финальная сдача.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section footer-cta">
+      <div class="container">
+        <section class="card pad glow">
+          <p class="eyebrow">Финальная демонстрация</p>
+          <h2>Начни защиту с Demo Center</h2>
+          <p class="lead">Там можно подготовить демо-данные, проверить статус MVP и перейти ко всем ключевым частям проекта.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="projects/timeguard/demo-center.html?v=10">Открыть Demo Center</a>
+            <a class="btn btn-secondary" href="projects/timeguard/cloud.html?v=10">Проверить Cloud</a>
+          </div>
+        </section>
+      </div>
+    </section>
   </main>
 </body>
 </html>
