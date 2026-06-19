@@ -20,7 +20,7 @@
   ];
 
   function show(message, type = '') {
-    const box = document.getElementById('healthResult');
+    const box = document.getElementById('seedResult');
     if (!box) return;
     box.textContent = message;
     box.className = `alert ${type}`;
@@ -39,7 +39,7 @@
     localStorage.setItem(TASKS_KEY, JSON.stringify(demoTasks()));
     localStorage.setItem(STATS_KEY, JSON.stringify({ conflicts: 1, lastSubmitAt: 0 }));
     sessionStorage.setItem('timeguard_seed_just_done', '1');
-    show('Демо-данные подготовлены. Сейчас проверяю статус MVP...', 'ok');
+    show('Демо-данные подготовлены: профиль, тариф, 5 задач и прогресс записаны в браузер.', 'ok');
     setTimeout(() => window.dispatchEvent(new Event('timeguard-demo-updated')), 120);
   }
 
