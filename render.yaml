@@ -17,8 +17,14 @@ services:
         value: strict-origin-when-cross-origin
     routes:
       - type: redirect
+        source: /overview
+        destination: /projects/timeguard/demo-center.html
+      - type: redirect
         source: /demo
         destination: /projects/timeguard/demo-center.html
+      - type: redirect
+        source: /about
+        destination: /projects/timeguard/pitch.html
       - type: redirect
         source: /pitch
         destination: /projects/timeguard/pitch.html
@@ -34,3 +40,12 @@ services:
       - type: redirect
         source: /pricing
         destination: /projects/timeguard/pricing.html
+      - type: redirect
+        source: /login
+        destination: /projects/timeguard/login.html
+      - type: redirect
+        source: /register
+        destination: /projects/timeguard/register.html
+      - type: redirect
+        source: /signup
+        destination: /projects/timeguard/register.html
