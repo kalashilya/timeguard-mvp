@@ -13,7 +13,8 @@ The current MVP uses Supabase for Auth, profiles, task synchronization, RLS and 
 - `sample-data.sql` — small manual sample;
 - `queries.md` — key SQL queries and product scenarios;
 - `rls-notes.md` — access rules and security notes;
-- `edge-functions-plan.md` — planned backend functions.
+- `functions/timeguard-create-task/` — Edge Function source for server-side task creation;
+- `edge-functions-plan.md` — backend function roadmap.
 
 ## Tables
 
@@ -44,7 +45,7 @@ Stores user tasks:
 
 ### `task_events`
 
-Prepared for future analytics and audit events.
+Stores task events for rate limiting, analytics and future audit logs.
 
 ## RLS
 
@@ -63,6 +64,50 @@ Current MVP rule:
 - user can insert own events.
 
 Admin access is intentionally not implemented in RLS in the current MVP to avoid recursive policy issues. Admin screen is an educational frontend demo.
+
+## Edge Functions
+
+### `timeguard-create-task`
+
+The repository now includes the source code for `timeguard-create-task`.
+
+The function performs server-side checks:
+
+- JWT/auth validation;
+- required fields validation;
+- date and time format validation;
+- `end_time > start_time` validation;
+- profile and plan loading;
+- Free/Plus/Team daily task limits;
+- days-ahead limits;
+- task creation rate limit;
+- time conflict check against existing tasks;
+- insert into `tasks`;
+- insert audit/rate event into `task_events`.
+
+This moves the strongest product rule — conflict prevention — from frontend-only logic toward backend validation.
+
+### Deployment
+
+The function is ready in the repository but must be deployed to the connected Supabase project before the live frontend can call it.
+
+Deploy command from `projects/timeguard/supabase/`:
+
+```bash
+supabase functions deploy timeguard-create-task
+```
+
+The function is configured in `config.toml` with:
+
+```toml
+[functions.timeguard-create-task]
+verify_jwt = true
+```
+
+### Planned functions
+
+- `timeguard-account` — profile, plan and statistics;
+- `timeguard-plan` — tariff update after payment webhook.
 
 ## How to use in Supabase Studio
 
@@ -84,16 +129,7 @@ Admin access is intentionally not implemented in RLS in the current MVP to avoid
 3. Run local Supabase.
 4. Apply migrations.
 5. Use `seed.sql` after creating a user.
-
-## Edge Functions
-
-Edge Functions are planned as the next production step:
-
-- `timeguard-create-task` — server-side validation and conflict check;
-- `timeguard-account` — profile, plan and statistics;
-- `timeguard-plan` — tariff update after payment webhook.
-
-The live MVP does not require Edge Functions because the main goal is educational demonstration. The frontend uses Supabase directly with publishable key and RLS.
+6. Test the function locally with `supabase functions serve timeguard-create-task`.
 
 ## Security note
 
