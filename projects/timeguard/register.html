@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TimeGuard registration</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="header"><div class="container header-inner"><a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>profile</small></span></a><nav class="nav"><a href="app.html">Главная</a><a href="cabinet.html">Кабинет</a></nav></div></header>
+  <main class="hero"><div class="container grid"><section class="card pad"><p class="eyebrow">Учебный auth flow</p><h1>Создание профиля</h1><p class="lead">Эта страница имитирует регистрацию в учебном MVP. Данные сохраняются в браузере.</p></section><section class="card pad"><form id="registerForm" class="stack"><label class="field"><span>Имя</span><input id="regName" required placeholder="Илья"></label><label class="field"><span>Email</span><input id="regEmail" required type="email" placeholder="name@example.com"></label><label class="field"><span>Роль</span><select id="regRole"><option value="user">user</option><option value="admin">admin</option></select></label><button class="btn btn-primary" type="submit">Создать профиль</button></form></section></div></main>
+  <script src="auth-bootstrap.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const profile = { name: regName.value.trim(), email: regEmail.value.trim(), role: regRole.value, plan: 'free', createdAt: new Date().toISOString() };
+      TimeGuardAuth.saveProfile(profile);
+      location.href = 'verify-step.html';
+    });
+  </script>
+</body>
+</html>
