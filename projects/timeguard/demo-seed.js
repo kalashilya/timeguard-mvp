@@ -38,16 +38,18 @@
     localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
     localStorage.setItem(TASKS_KEY, JSON.stringify(demoTasks()));
     localStorage.setItem(STATS_KEY, JSON.stringify({ conflicts: 1, lastSubmitAt: 0 }));
-    show('Демо-данные готовы: профиль, задачи, прогресс и тариф записаны в браузер.', 'ok');
-    setTimeout(() => window.dispatchEvent(new Event('timeguard-demo-updated')), 50);
+    sessionStorage.setItem('timeguard_seed_just_done', '1');
+    show('Демо-данные подготовлены. Сейчас проверяю статус MVP...', 'ok');
+    setTimeout(() => window.dispatchEvent(new Event('timeguard-demo-updated')), 120);
   }
 
   function clearDemoData() {
     localStorage.removeItem(PROFILE_KEY);
     localStorage.removeItem(TASKS_KEY);
     localStorage.removeItem(STATS_KEY);
+    sessionStorage.setItem('timeguard_demo_cleared', '1');
     show('Демо-данные очищены. Можно пройти сценарий с нуля.', 'ok');
-    setTimeout(() => window.dispatchEvent(new Event('timeguard-demo-updated')), 50);
+    setTimeout(() => window.dispatchEvent(new Event('timeguard-demo-updated')), 120);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
