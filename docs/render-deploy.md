@@ -1,16 +1,31 @@
 # Render deploy guide
 
+## Current Render URL
+
+TimeGuard Planner is deployed on Render:
+
+`https://timeguard-mvp.onrender.com`
+
+Useful short routes:
+
+- `https://timeguard-mvp.onrender.com/demo`
+- `https://timeguard-mvp.onrender.com/pitch`
+- `https://timeguard-mvp.onrender.com/planner`
+- `https://timeguard-mvp.onrender.com/cabinet`
+- `https://timeguard-mvp.onrender.com/cloud`
+- `https://timeguard-mvp.onrender.com/pricing`
+
 ## Goal
 
 Deploy TimeGuard Planner to Render and get a product-style URL like:
 
-`https://timeguard-planner.onrender.com`
+`https://timeguard-mvp.onrender.com`
 
 The project is a static HTML/CSS/JS site, so it does not need a backend server or build step for the current MVP.
 
 ## What was added
 
-The repository now includes:
+The repository includes:
 
 `render.yaml`
 
@@ -18,7 +33,7 @@ This file tells Render to publish the repository root as a static site.
 
 ## Render settings
 
-Use these settings if creating the service manually:
+Use these settings if creating or recreating the service manually:
 
 | Field | Value |
 |---|---|
@@ -47,33 +62,16 @@ The file defines:
   - `/cloud`;
   - `/pricing`.
 
-## Manual steps
+## Manual verification
 
-1. Open Render Dashboard.
-2. Click `New`.
-3. Choose `Static Site` or `Blueprint`.
-4. Connect GitHub repository `kalashilya/timeguard-mvp`.
-5. Select branch `main`.
-6. Confirm the settings.
-7. Deploy.
-8. Wait until Render gives an `onrender.com` URL.
-9. Open the new URL and check the main route.
-10. Check these short routes:
-    - `/demo`;
-    - `/planner`;
-    - `/cloud`;
-    - `/pricing`.
-
-## After deployment
-
-Update these files with the Render URL:
-
-- root `README.md`;
-- `docs/final-submission.md`;
-- `projects/timeguard/teacher-demo-script.md`;
-- `projects/timeguard/navigation-check.md`.
-
-Do this only after the Render URL is created.
+1. Open `https://timeguard-mvp.onrender.com`.
+2. Open `/demo`.
+3. Prepare demo data.
+4. Check MVP status.
+5. Open `/planner`.
+6. Open `/cabinet`.
+7. Open `/cloud`.
+8. Open `/pricing`.
 
 ## Important note
 
