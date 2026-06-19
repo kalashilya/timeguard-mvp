@@ -1,17 +1,17 @@
-# HW10. Paywall and monetization
+# HW10 — Paywall и монетизация
 
-## Free limit
+## Free-лимит
 
-The free plan limits how many tasks can be added for one day and how far ahead the user can plan.
+Бесплатный план ограничивает количество задач на один день и горизонт планирования вперёд.
 
-## Why this is useful
+## Почему это логично
 
-The user first sees product value, then reaches a natural limit and sees the plan screen.
+Пользователь сначала получает ценность: добавляет задачи и видит проверку конфликтов. После этого ограничение Free-плана воспринимается как естественный шаг развития продукта.
 
-## MVP implementation
+## Реализация в MVP
 
-The tariff step is educational. It updates the user's plan in browser storage and shows how monetization logic can work in a real product.
+Тарифный сценарий учебный. Пользователь выбирает план на странице `pricing.html`, затем подтверждает его на `payment-success.html`. После подтверждения тариф сохраняется в браузере.
 
-## Next step
+## Ограничение
 
-A production version needs server-side plan status and payment provider verification.
+В учебной версии нет настоящих платёжных операций. Для production-версии нужна серверная проверка статуса тарифа и интеграция с платёжным провайдером.
