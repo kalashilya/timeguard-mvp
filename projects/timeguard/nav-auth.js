@@ -36,11 +36,24 @@
     return Array.from(nav.querySelectorAll('a')).some((link) => (link.getAttribute('href') || '').includes('cabinet'));
   }
 
+  function updateAuthCtas(profile) {
+    document.querySelectorAll('a, button').forEach((item) => {
+      if (item.closest('.nav')) return;
+      if (item.getAttribute('data-auth-dynamic')) return;
+      const href = (item.getAttribute('href') || '').toLowerCase();
+      const text = (item.textContent || '').trim().toLowerCase();
+      const isAuthCta = href.includes('login') || href.includes('register') || href.includes('signup') || text === 'войти' || text === 'регистрация' || text === 'создать аккаунт' || text === 'уже есть аккаунт? войти';
+      if (isAuthCta) item.classList.toggle('hidden', Boolean(profile));
+    });
+  }
+
   function renderAuthNav() {
     const nav = document.querySelector('.nav');
-    if (!nav) return;
-
     const profile = readProfile();
+
+    updateAuthCtas(profile);
+
+    if (!nav) return;
 
     nav.querySelectorAll('[data-auth-dynamic]').forEach((item) => item.remove());
     nav.querySelectorAll('[data-user-link]').forEach((item) => item.classList.toggle('hidden', !profile));
