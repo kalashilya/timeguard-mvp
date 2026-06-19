@@ -23,6 +23,7 @@ The user does not just store tasks. The user checks whether the day plan is real
 - landing page;
 - demo center;
 - pitch page;
+- one-click demo data;
 - profile flow;
 - register/login/verify flow;
 - task planner;
@@ -36,10 +37,15 @@ The user does not just store tasks. The user checks whether the day plan is real
 - pricing scenario;
 - admin demo page;
 - Supabase Auth;
-- Supabase tasks table;
+- Supabase profiles and tasks tables;
 - RLS policies;
+- Supabase CLI config;
+- migrations and seed file;
 - sync to Supabase;
-- cloud page that reads tasks from Supabase.
+- cloud page that reads tasks from Supabase;
+- metrics and validation document;
+- known limitations document;
+- repository map.
 
 ## Defense route
 
@@ -54,11 +60,29 @@ The user does not just store tasks. The user checks whether the day plan is real
 9. Open Cabinet and sync with Supabase.
 10. Open Cloud tasks and show that data is loaded back from Supabase.
 11. Open Pricing and show the Free-limit scenario.
-12. Open GitHub README, test plan and SQL schema.
+12. Open GitHub README, repository map, test plan and SQL schema.
 
 ## What to say in 40 seconds
 
 TimeGuard Planner is an educational MVP of a smart daily planner. The problem is that ordinary todo-lists store tasks but do not check whether the schedule is realistic. A user can easily put two tasks at the same time. TimeGuard solves this by checking date and time before saving the task. The project includes profile flow, task planner, conflict validation, progress, filters, weekly overview, export, pricing scenario, Supabase Auth, SQL schema, RLS policies, synchronization and a cloud page that reads tasks back from the database.
+
+## What is real and what is demo
+
+Real:
+
+- live GitHub Pages site;
+- planner logic;
+- Supabase Auth;
+- Supabase tasks table;
+- RLS;
+- sync to Supabase;
+- cloud reading from Supabase.
+
+Educational demo:
+
+- payment activation;
+- admin frontend role;
+- commercial tariff enforcement.
 
 ## Final status
 
