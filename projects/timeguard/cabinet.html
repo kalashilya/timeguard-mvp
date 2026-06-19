@@ -10,7 +10,7 @@
   <header class="header">
     <div class="container header-inner">
       <a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>кабинет</small></span></a>
-      <nav class="nav"><a href="app.html">Главная</a><a href="pricing.html">Тарифы</a><a href="admin.html">Admin</a></nav>
+      <nav class="nav"><a href="app.html">Главная</a><a href="login.html">Вход</a><a href="pricing.html">Тарифы</a><a href="admin.html">Admin</a></nav>
     </div>
   </header>
   <main class="hero">
@@ -22,8 +22,10 @@
         <div class="cards">
           <article class="card small-card"><h3>Профиль</h3><p id="cabinetProfile"></p></article>
           <article class="card small-card"><h3>Тариф</h3><p class="price" id="cabinetPlan">FREE</p></article>
-          <article class="card small-card"><h3>Хранение</h3><p>браузерное хранилище</p></article>
+          <article class="card small-card"><h3>Хранение</h3><p>браузер + Supabase-ready</p></article>
         </div>
+        <div class="actions"><button class="btn btn-primary" id="syncSupabaseBtn">Синхронизировать с Supabase</button><a class="btn btn-secondary" href="login.html">Войти через Supabase</a></div>
+        <div id="syncResult" class="alert hidden"></div>
       </section>
       <section class="section">
         <div id="cabinetEmpty" class="empty hidden">Планов пока нет.</div>
@@ -31,6 +33,10 @@
       </section>
     </div>
   </main>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase-settings.js"></script>
+  <script src="supabase-adapter.js"></script>
+  <script src="supabase-sync.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
