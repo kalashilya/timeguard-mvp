@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: timeguard-planner
+    runtime: static
+    plan: free
+    buildCommand: echo "Static HTML/CSS/JS site — no build step required"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: sameorigin
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      - type: redirect
+        source: /demo
+        destination: /projects/timeguard/demo-center.html
+      - type: redirect
+        source: /pitch
+        destination: /projects/timeguard/pitch.html
+      - type: redirect
+        source: /planner
+        destination: /projects/timeguard/app.html
+      - type: redirect
+        source: /cabinet
+        destination: /projects/timeguard/cabinet.html
+      - type: redirect
+        source: /cloud
+        destination: /projects/timeguard/cloud.html
+      - type: redirect
+        source: /pricing
+        destination: /projects/timeguard/pricing.html
