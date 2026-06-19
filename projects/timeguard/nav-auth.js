@@ -14,6 +14,16 @@
     return isNested ? path : `projects/timeguard/${path}`;
   }
 
+  function clearSupabaseAuthFallback() {
+    Object.keys(localStorage).forEach((key) => {
+      const lower = key.toLowerCase();
+      if (lower.startsWith('sb-') && lower.includes('auth-token')) {
+        localStorage.removeItem(key);
+      }
+    });
+    localStorage.removeItem('supabase.auth.token');
+  }
+
   async function logout() {
     try {
       if (window.TimeGuardSupabase?.ready) {
@@ -23,6 +33,7 @@
       console.warn('Supabase signOut failed', error);
     }
     localStorage.removeItem(PROFILE_KEY);
+    clearSupabaseAuthFallback();
     location.href = pagePath('login.html?v=12');
   }
 
