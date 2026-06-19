@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard Planner</title>
   <link rel="stylesheet" href="app.css?v=12">
+  <link rel="stylesheet" href="day-view.css?v=1">
 </head>
 <body data-page="app">
 <header class="header">
@@ -73,6 +74,10 @@
           </form>
         </section>
         <section class="card pad">
+          <div class="top"><div><p class="eyebrow">Визуальный день</p><h2 id="visualDateTitle">Расписание</h2></div><div class="day-legend"><span><i class="legend-dot high"></i>Высокий</span><span><i class="legend-dot medium"></i>Средний</span><span><i class="legend-dot low"></i>Низкий</span></div></div>
+          <div id="dayView" class="day-view"></div>
+        </section>
+        <section class="card pad">
           <div class="top"><div><p class="eyebrow">План дня</p><h2 id="selectedDateTitle">Выбранная дата</h2></div><div class="actions"><button class="btn btn-ghost" id="prevDateBtn">←</button><button class="btn btn-ghost" id="todayBtn">Сегодня</button><button class="btn btn-ghost" id="nextDateBtn">→</button></div></div>
           <div id="alertBox" class="alert hidden"></div>
           <div id="timeline" class="timeline"></div>
@@ -87,7 +92,7 @@
 <script src="auth-bootstrap.js?v=10"></script>
 <script src="nav-auth.js?v=12"></script>
 <script src="form-hardening.js?v=10"></script>
-<script src="app.js?v=10"></script>
+<script src="app.js?v=11"></script>
 <script src="product-upgrades.js?v=10"></script>
 </body>
 </html>
