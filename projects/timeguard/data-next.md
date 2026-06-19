@@ -1,9 +1,28 @@
 # Data next step
 
-Current version uses browser storage. Later version can use cloud data storage.
+## Текущая версия
 
-Suggested entities: profiles, tasks, events.
+TimeGuard сейчас использует браузерное хранилище. Это подходит для стабильного учебного MVP, потому что проект можно быстро открыть, проверить и показать без настройки backend.
 
-User can edit own tasks. Admin can read summary data. Guest has no private data access.
+## Следующий этап
 
-The current goal is a stable educational MVP for demo.
+В следующей версии данные можно перенести в Supabase или Firebase.
+
+## Предлагаемые сущности
+
+- `profiles` — профиль, email, роль, тариф;
+- `tasks` — задачи пользователя;
+- `plans` — планы по датам;
+- `events` — действия пользователя для аналитики;
+- `subscriptions` — тарифный статус.
+
+## Правила доступа
+
+- guest может смотреть лендинг;
+- user может читать и редактировать только свои задачи;
+- admin может видеть агрегированную сводку;
+- тарифный статус должен проверяться на сервере.
+
+## Почему не подключено сразу
+
+Цель текущего этапа — стабильный учебный MVP для демонстрации. Backend добавляется после проверки пользовательского сценария.
