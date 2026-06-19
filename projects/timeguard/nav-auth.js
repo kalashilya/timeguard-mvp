@@ -47,6 +47,32 @@
     });
   }
 
+  function ensureProfileMenuCss() {
+    if (document.querySelector('link[href*="profile-menu.css"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = pagePath('profile-menu.css?v=1');
+    document.head.append(link);
+  }
+
+  function renderProfileMenu(nav, profile) {
+    ensureProfileMenuCss();
+    const first = (profile.name || profile.email || 'T').trim().charAt(0).toUpperCase();
+    const plan = String(profile.plan || 'free').toUpperCase();
+    const wrap = document.createElement('span');
+    wrap.className = 'profile-menu-wrap';
+    wrap.setAttribute('data-auth-dynamic', 'profile-menu');
+    wrap.innerHTML = `<button class="profile-button" type="button" aria-label="Профиль"><span class="profile-avatar">${first}</span><span>${profile.email || profile.name || 'Профиль'}</span></button><div class="profile-menu-panel hidden"><div class="profile-menu-head"><span class="profile-avatar">${first}</span><div><div class="profile-menu-name">${profile.name || 'Пользователь TimeGuard'}</div><div class="profile-menu-email">${profile.email || 'email не указан'}</div></div></div><a class="profile-menu-item" href="${pagePath('cabinet.html?v=12')}"><span>Кабинет</span><strong>→</strong></a><a class="profile-menu-item" href="${pagePath('pricing.html?v=12')}"><span>Тариф</span><strong>${plan}</strong></a><button class="btn btn-secondary profile-menu-logout" type="button">Выйти</button></div>`;
+    const button = wrap.querySelector('.profile-button');
+    const panel = wrap.querySelector('.profile-menu-panel');
+    button?.addEventListener('click', () => panel?.classList.toggle('hidden'));
+    wrap.querySelector('.profile-menu-logout')?.addEventListener('click', logout);
+    document.addEventListener('click', (event) => {
+      if (!wrap.contains(event.target)) panel?.classList.add('hidden');
+    });
+    nav.append(wrap);
+  }
+
   function renderAuthNav() {
     const nav = document.querySelector('.nav');
     const profile = readProfile();
@@ -73,19 +99,7 @@
       nav.append(cabinet);
     }
 
-    const user = document.createElement('span');
-    user.className = 'tag';
-    user.textContent = profile.email || profile.name || 'Пользователь';
-    user.setAttribute('data-auth-dynamic', 'user');
-
-    const out = document.createElement('button');
-    out.type = 'button';
-    out.className = 'btn btn-secondary';
-    out.textContent = 'Выйти';
-    out.setAttribute('data-auth-dynamic', 'logout');
-    out.addEventListener('click', logout);
-
-    nav.append(user, out);
+    renderProfileMenu(nav, profile);
   }
 
   document.addEventListener('DOMContentLoaded', renderAuthNav);
