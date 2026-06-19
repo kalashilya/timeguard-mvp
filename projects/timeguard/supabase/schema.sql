@@ -14,6 +14,7 @@ create table if not exists profiles (
 create table if not exists tasks (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references profiles(id) on delete cascade,
+  local_id text,
   task_date date not null,
   title text not null,
   start_time time not null,
@@ -27,6 +28,10 @@ create table if not exists tasks (
   constraint valid_task_time check (end_time > start_time)
 );
 
+create unique index if not exists idx_tasks_user_local_id
+on tasks(user_id, local_id)
+where local_id is not null;
+
 create table if not exists task_events (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references profiles(id) on delete cascade,
@@ -39,9 +44,19 @@ alter table profiles enable row level security;
 alter table tasks enable row level security;
 alter table task_events enable row level security;
 
-create policy "profiles_select_own_or_admin"
+drop policy if exists "profiles_select_own_or_admin" on profiles;
+drop policy if exists "profiles_insert_own" on profiles;
+drop policy if exists "profiles_update_own" on profiles;
+drop policy if exists "tasks_select_own_or_admin" on tasks;
+drop policy if exists "tasks_insert_own" on tasks;
+drop policy if exists "tasks_update_own" on tasks;
+drop policy if exists "tasks_delete_own" on tasks;
+drop policy if exists "events_insert_own" on task_events;
+drop policy if exists "events_select_own_or_admin" on task_events;
+
+create policy "profiles_select_own"
 on profiles for select
-using (auth.uid() = id or exists (select 1 from profiles p where p.id = auth.uid() and p.role = 'admin'));
+using (auth.uid() = id);
 
 create policy "profiles_insert_own"
 on profiles for insert
@@ -52,9 +67,9 @@ on profiles for update
 using (auth.uid() = id)
 with check (auth.uid() = id);
 
-create policy "tasks_select_own_or_admin"
+create policy "tasks_select_own"
 on tasks for select
-using (auth.uid() = user_id or exists (select 1 from profiles p where p.id = auth.uid() and p.role = 'admin'));
+using (auth.uid() = user_id);
 
 create policy "tasks_insert_own"
 on tasks for insert
@@ -73,6 +88,6 @@ create policy "events_insert_own"
 on task_events for insert
 with check (auth.uid() = user_id);
 
-create policy "events_select_own_or_admin"
+create policy "events_select_own"
 on task_events for select
-using (auth.uid() = user_id or exists (select 1 from profiles p where p.id = auth.uid() and p.role = 'admin'));
+using (auth.uid() = user_id);
