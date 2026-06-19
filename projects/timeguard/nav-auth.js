@@ -14,7 +14,14 @@
     return isNested ? path : `projects/timeguard/${path}`;
   }
 
-  function logout() {
+  async function logout() {
+    try {
+      if (window.TimeGuardSupabase?.ready) {
+        await window.TimeGuardSupabase.signOut();
+      }
+    } catch (error) {
+      console.warn('Supabase signOut failed', error);
+    }
     localStorage.removeItem(PROFILE_KEY);
     location.href = pagePath('login.html?v=12');
   }
@@ -70,5 +77,5 @@
 
   document.addEventListener('DOMContentLoaded', renderAuthNav);
   window.addEventListener('storage', renderAuthNav);
-  window.TimeGuardNav = { renderAuthNav };
+  window.TimeGuardNav = { renderAuthNav, logout };
 })();
