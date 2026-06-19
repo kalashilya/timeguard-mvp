@@ -1,28 +1,32 @@
-# Components map
+# Components map TimeGuard Planner
 
-## Base UI
+## Базовые UI-компоненты
 
 - Header
+- Logo
 - Navigation
-- Hero section
 - Card
 - Button
-- Form field
 - Alert
 - Modal
+- Badge
+- FormField
+- TaskCard
 - Toast
 
-## Product blocks
+## Сценарные блоки
 
-- Profile form
-- Task form
-- Task timeline
-- Stats panel
-- Paywall modal
-- Cabinet summary
-- Pricing cards
-- Admin summary
+- HeroSection — объясняет ценность продукта.
+- ProfileForm — сохраняет учебный профиль пользователя.
+- TaskForm — добавляет задачу в план.
+- Timeline — показывает задачи выбранной даты.
+- ConflictAlert — сообщает о пересечении времени.
+- StatsPanel — показывает статистику задач и конфликтов.
+- PaywallModal — показывает ограничение Free-плана.
+- CabinetSummary — показывает профиль и сохранённые планы.
+- PricingCards — показывает тарифы.
+- AdminSummary — показывает учебную admin-сводку.
 
-## Purpose
+## Зачем это нужно
 
-This document explains how the MVP interface is divided into reusable parts.
+Карта компонентов показывает, что MVP состоит из понятных блоков, а не из случайного набора страниц. Это помогает объяснить архитектуру проекта на защите и упрощает дальнейшее развитие.
