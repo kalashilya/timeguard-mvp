@@ -27,7 +27,7 @@
     if (!session?.user) {
       if ($('sessionStatus')) $('sessionStatus').textContent = 'Нет входа';
       if ($('cloudTaskCount')) $('cloudTaskCount').textContent = '—';
-      say('Локальная часть работает, но для cloud-проверки нужно войти через Supabase.', 'bad');
+      say(`Локальная часть готова: ${localTasks.length} задач. Для cloud-проверки нужно войти через Supabase.`, localTasks.length ? 'ok' : 'bad');
       return;
     }
 
@@ -49,6 +49,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     $('runHealthBtn')?.addEventListener('click', runHealthCheck);
+    window.addEventListener('timeguard-demo-updated', runHealthCheck);
     runHealthCheck();
   });
 })();
