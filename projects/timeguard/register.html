@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard registration</title>
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.css?v=10">
 </head>
 <body>
-  <header class="header"><div class="container header-inner"><a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>profile</small></span></a><nav class="nav"><a href="app.html">Главная</a><a href="cabinet.html">Кабинет</a></nav></div></header>
+  <header class="header"><div class="container header-inner"><a class="brand" href="demo-center.html?v=10"><span class="logo">T</span><span>TimeGuard<br><small>profile</small></span></a><nav class="nav"><a href="demo-center.html?v=10">Demo</a><a href="app.html?v=10">Планировщик</a><a href="login.html?v=10">Вход</a><a href="cabinet.html?v=10">Кабинет</a></nav></div></header>
   <main class="hero"><div class="container grid"><section class="card pad"><p class="eyebrow">Auth flow</p><h1>Создание профиля</h1><p class="lead">Если Supabase настроен, профиль создаётся через реальную авторизацию. Если нет — работает учебный локальный режим.</p><div id="authStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="registerForm" class="stack"><label class="field"><span>Имя</span><input id="regName" required placeholder="Илья"></label><label class="field"><span>Email</span><input id="regEmail" required type="email" placeholder="name@example.com"></label><label class="field"><span>Пароль</span><input id="regPassword" type="password" minlength="6" placeholder="минимум 6 символов"></label><label class="field"><span>Роль</span><select id="regRole"><option value="user">user</option><option value="admin">admin</option></select></label><button class="btn btn-primary" type="submit">Создать профиль</button></form></section></div></main>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="supabase-settings.js"></script>
-  <script src="supabase-adapter.js"></script>
-  <script src="auth-bootstrap.js"></script>
+  <script src="supabase-settings.js?v=10"></script>
+  <script src="supabase-adapter.js?v=10"></script>
+  <script src="auth-bootstrap.js?v=10"></script>
   <script>
     authStatus.textContent = window.TimeGuardSupabase?.ready ? 'Supabase подключён. Будет создан реальный профиль.' : 'Supabase пока не настроен. Работает локальный учебный режим.';
     document.getElementById('registerForm').addEventListener('submit', async function(event) {
@@ -27,7 +27,7 @@
         }
       }
       TimeGuardAuth.saveProfile(profile);
-      location.href = 'verify-step.html';
+      location.href = 'verify-step.html?v=10';
     });
   </script>
 </body>
