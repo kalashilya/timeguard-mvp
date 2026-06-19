@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard login</title>
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.css?v=10">
 </head>
 <body>
-  <header class="header"><div class="container header-inner"><a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>login</small></span></a><nav class="nav"><a href="register.html">Регистрация</a><a href="cabinet.html">Кабинет</a></nav></div></header>
+  <header class="header"><div class="container header-inner"><a class="brand" href="demo-center.html?v=10"><span class="logo">T</span><span>TimeGuard<br><small>login</small></span></a><nav class="nav"><a href="demo-center.html?v=10">Demo</a><a href="register.html?v=10">Регистрация</a><a href="cabinet.html?v=10">Кабинет</a><a href="cloud.html?v=10">Cloud</a></nav></div></header>
   <main class="hero"><div class="container grid"><section class="card pad"><p class="eyebrow">Supabase Auth</p><h1>Вход</h1><p class="lead">Если Supabase настроен, вход работает через реальную авторизацию.</p><div id="loginStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="loginForm" class="stack"><label class="field"><span>Email</span><input id="loginEmail" required type="email"></label><label class="field"><span>Пароль</span><input id="loginPassword" required type="password"></label><button class="btn btn-primary" type="submit">Войти</button></form></section></div></main>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="supabase-settings.js"></script>
-  <script src="supabase-adapter.js"></script>
-  <script src="auth-bootstrap.js"></script>
+  <script src="supabase-settings.js?v=10"></script>
+  <script src="supabase-adapter.js?v=10"></script>
+  <script src="auth-bootstrap.js?v=10"></script>
   <script>
     loginStatus.textContent = window.TimeGuardSupabase?.ready ? 'Supabase подключён.' : 'Supabase пока не настроен.';
     document.getElementById('loginForm').addEventListener('submit', async function(event) {
@@ -22,7 +22,7 @@
       if (result.error) { alert(result.error.message); return; }
       const user = result.data.user;
       TimeGuardAuth.saveProfile({ name: user.user_metadata?.name || 'TimeGuard User', email: user.email, role: 'user', plan: 'free', createdAt: new Date().toISOString() });
-      location.href = 'cabinet.html';
+      location.href = 'cabinet.html?v=10';
     });
   </script>
 </body>
