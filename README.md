@@ -8,28 +8,26 @@
 
 | Раздел | Ссылка |
 |---|---|
-| Live site | `https://kalashilya.github.io/timeguard-mvp/` |
-| Demo Center | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/demo-center.html?v=11` |
-| Pitch | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pitch.html?v=11` |
-| Planner | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/app.html?v=11` |
-| Cabinet | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cabinet.html?v=11` |
-| Cloud tasks | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/cloud.html?v=11` |
-| Pricing | `https://kalashilya.github.io/timeguard-mvp/projects/timeguard/pricing.html?v=11` |
+| Render live site | `https://timeguard-mvp.onrender.com` |
+| Render Demo | `https://timeguard-mvp.onrender.com/demo` |
+| Render Pitch | `https://timeguard-mvp.onrender.com/pitch` |
+| Render Planner | `https://timeguard-mvp.onrender.com/planner` |
+| Render Cloud | `https://timeguard-mvp.onrender.com/cloud` |
+| GitHub Pages backup | `https://kalashilya.github.io/timeguard-mvp/` |
 
-## Render-ready status
+## Render status
 
-Проект подготовлен к деплою на Render:
+Проект задеплоен на Render:
 
+- основной URL: `https://timeguard-mvp.onrender.com`;
 - добавлен `render.yaml`;
 - добавлен `docs/render-deploy.md`;
 - проект публикуется как static site из корня репозитория;
 - для текущего MVP build step не нужен.
 
-После создания Render-сервиса сюда можно добавить новую ссылку вида `https://timeguard-planner.onrender.com`.
-
 ## Как быстро проверить проект
 
-1. Открыть **Demo Center**.
+1. Открыть **Demo Center**: `https://timeguard-mvp.onrender.com/demo`.
 2. Нажать **«Подготовить демо-данные»**.
 3. Нажать **«Проверить статус MVP»**.
 4. Открыть **Pitch** и коротко объяснить идею.
@@ -91,7 +89,7 @@ TimeGuard проверяет расписание до сохранения за
 
 ## Стек
 
-HTML, CSS, JavaScript, localStorage, GitHub Pages, Render-ready static site, Supabase.
+HTML, CSS, JavaScript, localStorage, GitHub Pages, Render static site, Supabase.
 
 ## Структура репозитория
 
