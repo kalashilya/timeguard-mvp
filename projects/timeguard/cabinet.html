@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard кабинет</title>
-  <link rel="stylesheet" href="app.css?v=5">
+  <link rel="stylesheet" href="app.css?v=7">
 </head>
 <body data-page="cabinet">
   <header class="header">
     <div class="container header-inner">
       <a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>кабинет</small></span></a>
-      <nav class="nav"><a href="app.html">Главная</a><a href="login.html">Вход</a><a href="pricing.html">Тарифы</a><a href="admin.html">Admin</a></nav>
+      <nav class="nav"><a href="app.html">Главная</a><a href="cloud.html">Cloud</a><a href="login.html">Вход</a><a href="pricing.html">Тарифы</a><a href="admin.html">Admin</a></nav>
     </div>
   </header>
   <main class="hero">
@@ -24,7 +24,7 @@
           <article class="card small-card"><h3>Тариф</h3><p class="price" id="cabinetPlan">FREE</p></article>
           <article class="card small-card"><h3>Хранение</h3><p>браузер + Supabase</p></article>
         </div>
-        <div class="actions"><button class="btn btn-primary" id="syncSupabaseBtn">Синхронизировать с Supabase</button><a class="btn btn-secondary" href="login.html">Войти через Supabase</a></div>
+        <div class="actions"><button class="btn btn-primary" id="syncSupabaseBtn">Синхронизировать с Supabase</button><a class="btn btn-secondary" href="cloud.html?v=7">Открыть Cloud-задачи</a><a class="btn btn-ghost" href="login.html">Войти через Supabase</a></div>
         <div id="syncResult" class="alert hidden"></div>
       </section>
       <section class="section">
@@ -34,9 +34,9 @@
     </div>
   </main>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="supabase-settings.js?v=5"></script>
-  <script src="supabase-adapter.js?v=5"></script>
-  <script src="supabase-sync.js?v=5"></script>
-  <script src="app.js?v=5"></script>
+  <script src="supabase-settings.js?v=7"></script>
+  <script src="supabase-adapter.js?v=7"></script>
+  <script src="supabase-sync.js?v=7"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
