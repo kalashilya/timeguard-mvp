@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TimeGuard login</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="header"><div class="container header-inner"><a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>login</small></span></a><nav class="nav"><a href="register.html">Регистрация</a><a href="cabinet.html">Кабинет</a></nav></div></header>
+  <main class="hero"><div class="container grid"><section class="card pad"><p class="eyebrow">Supabase Auth</p><h1>Вход</h1><p class="lead">Если Supabase настроен, вход работает через реальную авторизацию.</p><div id="loginStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="loginForm" class="stack"><label class="field"><span>Email</span><input id="loginEmail" required type="email"></label><label class="field"><span>Пароль</span><input id="loginPassword" required type="password"></label><button class="btn btn-primary" type="submit">Войти</button></form></section></div></main>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase-settings.js"></script>
+  <script src="supabase-adapter.js"></script>
+  <script src="auth-bootstrap.js"></script>
+  <script>
+    loginStatus.textContent = window.TimeGuardSupabase?.ready ? 'Supabase подключён.' : 'Supabase пока не настроен.';
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      if (!window.TimeGuardSupabase?.ready) { alert('Supabase не настроен.'); return; }
+      const result = await TimeGuardSupabase.signIn(loginEmail.value.trim(), loginPassword.value);
+      if (result.error) { alert(result.error.message); return; }
+      const user = result.data.user;
+      TimeGuardAuth.saveProfile({ name: user.user_metadata?.name || 'TimeGuard User', email: user.email, role: 'user', plan: 'free', createdAt: new Date().toISOString() });
+      location.href = 'cabinet.html';
+    });
+  </script>
+</body>
+</html>
