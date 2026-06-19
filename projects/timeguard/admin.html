@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard admin</title>
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="app.css?v=10">
 </head>
 <body data-page="admin">
-  <header class="header"><div class="container header-inner"><a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>admin</small></span></a><nav class="nav"><a href="app.html">Главная</a><a href="cabinet.html">Кабинет</a></nav></div></header>
+  <header class="header"><div class="container header-inner"><a class="brand" href="demo-center.html?v=10"><span class="logo">T</span><span>TimeGuard<br><small>admin</small></span></a><nav class="nav"><a href="demo-center.html?v=10">Demo</a><a href="app.html?v=10">Планировщик</a><a href="cabinet.html?v=10">Кабинет</a><a href="pricing.html?v=10">Тарифы</a></nav></div></header>
   <main class="hero">
     <div class="container">
       <section class="card pad"><p class="eyebrow">Учебная admin-панель</p><h1>Сводка MVP</h1><p class="lead">Страница показывает разделение ролей. Доступ есть только у профиля с ролью admin.</p></section>
-      <div id="adminDenied" class="empty hidden">Нет доступа. На главной странице сохраните профиль с ролью admin.</div>
+      <div id="adminDenied" class="empty hidden">Нет доступа. В Demo Center нажмите «Подготовить демо-данные» или на главной странице сохраните профиль с ролью admin.</div>
       <section id="adminContent" class="section cards hidden">
         <article class="card small-card"><h3 id="adminUsers">0</h3><p>Пользователи</p></article>
         <article class="card small-card"><h3 id="adminTasks">0</h3><p>Задачи</p></article>
@@ -20,6 +20,6 @@
       </section>
     </div>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>
