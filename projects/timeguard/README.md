@@ -1,80 +1,129 @@
 # TimeGuard Planner MVP
 
-Web MVP for planning a day without time conflicts.
+**TimeGuard Planner** — учебный MVP умного планировщика дня без конфликтов времени.
+
+Проект помогает пользователю собрать реалистичный план: добавить задачи, проверить пересечения, увидеть прогресс, отфильтровать дела, экспортировать план и синхронизировать задачи с Supabase.
 
 Live demo: `https://kalashilya.github.io/timeguard-mvp/`
 
-## What TimeGuard does
+## Что делает TimeGuard
 
-The user adds tasks for a selected date, sets start and end time, priority and category. Before saving, the app checks if the new task overlaps with existing tasks.
+Пользователь выбирает дату, добавляет задачу с временем начала и окончания, указывает приоритет, категорию и комментарий. Перед сохранением приложение проверяет, не пересекается ли новая задача с уже существующими задачами на эту дату.
 
-## Final site files
+## Главная ценность
 
-- `app.html` — main page and planner;
-- `app.css` — visual style;
-- `app.js` — profile, tasks, conflicts, limits and plan logic;
-- `auth-bootstrap.js` — demo profile helper;
-- `form-hardening.js` — form protection helper;
-- `register.html` — profile creation screen;
-- `verify-step.html` — profile confirmation screen;
-- `cabinet.html` — user cabinet;
-- `pricing.html` — pricing screen;
-- `payment-success.html` — plan activation step;
-- `admin.html` — demo summary page.
+TimeGuard не просто хранит список дел. Он помогает понять, можно ли реально выполнить план дня по времени.
 
-## Project documents
+## Финальная версия сайта
 
-- `open-local.md`;
-- `demo-exam-scenario.md`;
-- `security-checklist.md`;
-- `analytics.md`;
-- `deploy.md`;
-- `test-plan.md`;
-- `presentation-outline.md`;
-- `defense-cheatsheet.md`;
-- `user-flow.md`;
-- `ui-map.md`;
-- `components-map.md`;
-- `release-plan.md`;
-- `data-model.md`;
-- `data-next.md`;
-- `supabase/README.md`;
-- `supabase/schema.sql`;
-- `supabase/queries.md`;
-- `supabase/rls-notes.md`;
-- `supabase/sample-data.sql`;
-- `supabase/edge-functions-plan.md`.
+- `demo-center.html` — главный экран для защиты и проверки MVP;
+- `pitch.html` — короткая pitch-страница продукта;
+- `app.html` — основной планировщик;
+- `app.css` — визуальный стиль;
+- `app.js` — профиль, задачи, конфликты, лимиты и план;
+- `product-upgrades.js` — прогресс, фильтры, недельный обзор и экспорт;
+- `demo-seed.js` — подготовка демо-данных в один клик;
+- `demo-center.js` — проверка статуса MVP;
+- `auth-bootstrap.js` — базовый helper профиля;
+- `form-hardening.js` — защита формы от быстрых повторных действий;
+- `register.html` — регистрация пользователя;
+- `login.html` — вход через Supabase;
+- `verify-step.html` — учебный шаг подтверждения;
+- `cabinet.html` — кабинет пользователя и синхронизация;
+- `cloud.html` — чтение задач обратно из Supabase;
+- `cloud-tasks.js` — загрузка задач из базы;
+- `pricing.html` — тарифный сценарий;
+- `payment-success.html` — учебная активация тарифа;
+- `admin.html` — учебная admin-сводка.
 
-## Data
+## Проектные документы
 
-Browser storage is used:
+- `open-local.md` — как открыть проект локально;
+- `demo-exam-scenario.md` — сценарий защиты;
+- `defense-cheatsheet.md` — шпаргалка для выступления;
+- `test-plan.md` — план ручного тестирования;
+- `metrics-and-validation.md` — гипотеза, метрики и план проверки;
+- `known-limitations.md` — честные ограничения MVP;
+- `screens.md` — карта экранов;
+- `security-checklist.md` — проверка безопасности;
+- `analytics.md` — план аналитики;
+- `deploy.md` — публикация;
+- `presentation-outline.md` — структура презентации;
+- `user-flow.md` — пользовательский путь;
+- `ui-map.md` — карта интерфейса;
+- `components-map.md` — карта компонентов;
+- `release-plan.md` — план развития;
+- `data-model.md` — модель данных;
+- `data-next.md` — развитие данных;
+- `supabase/README.md` — описание Supabase-слоя;
+- `supabase/schema.sql` — SQL-схема;
+- `supabase/queries.md` — ключевые запросы;
+- `supabase/rls-notes.md` — RLS-политики;
+- `supabase/sample-data.sql` — тестовые данные;
+- `supabase/edge-functions-plan.md` — план backend-функций.
+
+## Данные
+
+В проекте используются два уровня хранения:
+
+### 1. localStorage
+
+Используется для быстрого frontend-сценария:
 
 - `timeguard_profile_v1`;
 - `timeguard_tasks_v1`;
 - `timeguard_stats_v1`.
 
-## Roles
+### 2. Supabase
 
-- `guest` — visitor without saved profile;
-- `user` — user with saved profile;
-- `admin` — demo role for summary page.
+Используется для реального auth-flow, базы и cloud-сценария:
 
-## What the site can do
+- `profiles` — профиль пользователя, роль, тариф и статус;
+- `tasks` — задачи пользователя;
+- `task_events` — события для будущей аналитики.
 
-1. Show product value on the first screen.
-2. Create a demo user profile.
-3. Confirm profile flow.
-4. Add tasks for a selected date.
-5. Sort tasks by time.
-6. Block overlapping tasks.
-7. Save plans in browser storage.
-8. Show saved days in cabinet.
-9. Apply Free limits.
-10. Show plan selection step.
-11. Show admin summary for admin role.
-12. Protect form from rapid repeated clicks.
-13. Describe the next database layer.
+## Supabase
+
+В проекте подключены:
+
+- Supabase Auth;
+- таблица профилей;
+- таблица задач;
+- RLS-политики;
+- синхронизация задач из браузера в Supabase;
+- Cloud-страница, которая читает задачи обратно из базы.
+
+Secret/service-role key во frontend не используется. В проекте используется только publishable key, а доступ к данным ограничивается RLS.
+
+## Роли
+
+- `guest` — посетитель без профиля;
+- `user` — пользователь с профилем;
+- `admin` — учебная frontend-роль для демонстрации admin-сводки.
+
+## Что умеет сайт
+
+1. Показывать ценность продукта на первом экране.
+2. Открывать Demo Center для защиты.
+3. Подготавливать демо-данные в один клик.
+4. Создавать профиль пользователя.
+5. Выполнять register/login flow через Supabase.
+6. Добавлять задачи на выбранную дату.
+7. Сортировать задачи по времени.
+8. Блокировать пересекающиеся задачи.
+9. Показывать прогресс выполнения.
+10. Фильтровать задачи по приоритету и категории.
+11. Показывать недельный обзор.
+12. Экспортировать план в TXT и JSON.
+13. Сохранять задачи в браузере.
+14. Синхронизировать задачи с Supabase.
+15. Читать задачи обратно из Supabase на Cloud-странице.
+16. Показывать кабинет пользователя.
+17. Показывать Free-лимит и тарифный сценарий.
+18. Показывать учебную admin-сводку.
+19. Защищать форму от быстрых повторных кликов.
+20. Документировать архитектуру, тестирование и ограничения.
 
 ## MVP limitation
 
-This is an educational frontend MVP. The next stage is a server database and a real account system.
+Проект остаётся учебным MVP. Оплата и admin-доступ являются демонстрационными. Supabase-слой работает реально для auth, хранения задач, RLS и cloud-чтения, но полноценная production-архитектура потребует backend-функций, server-side проверки тарифов, платежных webhooks и расширенной аналитики.
