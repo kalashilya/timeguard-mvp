@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard Demo Center</title>
-  <link rel="stylesheet" href="app.css?v=10">
+  <link rel="stylesheet" href="app.css?v=11">
 </head>
 <body data-page="demo">
   <header class="header">
     <div class="container header-inner">
-      <a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>demo center</small></span></a>
-      <nav class="nav"><a href="pitch.html?v=9">Pitch</a><a href="app.html?v=6">Планировщик</a><a href="cabinet.html?v=7">Кабинет</a><a href="cloud.html?v=7">Cloud</a><a href="pricing.html">Тарифы</a></nav>
+      <a class="brand" href="../../index.html"><span class="logo">T</span><span>TimeGuard<br><small>demo center</small></span></a>
+      <nav class="nav"><a href="pitch.html?v=9">Pitch</a><a href="app.html?v=11">Планировщик</a><a href="cabinet.html?v=11">Кабинет</a><a href="cloud.html?v=11">Cloud</a><a href="pricing.html?v=11">Тарифы</a></nav>
     </div>
   </header>
 
   <main class="hero">
     <div class="container">
-      <section class="card pad">
+      <section class="card pad glow">
         <p class="eyebrow">Финальная демонстрация</p>
-        <h1>TimeGuard Demo Center</h1>
+        <h1><span class="gradient-text">TimeGuard</span> Demo Center</h1>
         <p class="lead">Одна страница для защиты: быстрый запуск сценария, проверка данных и переходы к ключевым частям MVP.</p>
         <div class="actions">
           <button class="btn btn-primary" id="seedDemoBtn">Подготовить демо-данные</button>
@@ -29,36 +29,37 @@
       </section>
 
       <section class="section">
-        <div class="cards">
-          <article class="card small-card"><h3>Локальные задачи</h3><p class="price" id="localTaskCount">0</p></article>
-          <article class="card small-card"><h3>Supabase session</h3><p id="sessionStatus">Проверка...</p></article>
-          <article class="card small-card"><h3>Cloud tasks</h3><p class="price" id="cloudTaskCount">—</p></article>
+        <div class="kpi-grid">
+          <article class="kpi"><strong id="localTaskCount">0</strong><span>локальных задач</span></article>
+          <article class="kpi"><strong>Auth</strong><span id="sessionStatus">Проверка...</span></article>
+          <article class="kpi"><strong id="cloudTaskCount">—</strong><span>задач в Supabase</span></article>
+          <article class="kpi"><strong>MVP</strong><span>готовность к показу</span></article>
         </div>
-        <div class="actions"><a class="btn btn-primary" href="app.html?v=6">Планировщик</a><a class="btn btn-secondary" href="cabinet.html?v=7">Кабинет</a><a class="btn btn-ghost" href="cloud.html?v=7">Cloud-задачи</a><button class="btn btn-ghost" id="clearDemoBtn">Очистить демо</button></div>
+        <div class="actions"><a class="btn btn-primary" href="app.html?v=11">Планировщик</a><a class="btn btn-secondary" href="cabinet.html?v=11">Кабинет</a><a class="btn btn-ghost" href="cloud.html?v=11">Cloud-задачи</a><button class="btn btn-ghost" id="clearDemoBtn">Очистить демо</button></div>
         <div id="healthResult" class="alert hidden" style="margin-top:18px"></div>
       </section>
 
       <section class="section">
-        <h2>Сценарий защиты</h2>
+        <div class="section-title"><div><p class="eyebrow">Сценарий защиты</p><h2>Что показать преподавателю</h2></div></div>
         <div class="cards">
-          <article class="card small-card"><h3>1. Проблема</h3><p>Обычный todo-list не проверяет пересечения времени.</p></article>
-          <article class="card small-card"><h3>2. MVP</h3><p>Добавляем задачи, проверяем конфликты, сортируем план.</p></article>
-          <article class="card small-card"><h3>3. Pro tools</h3><p>Показываем прогресс, фильтры, неделю и экспорт.</p></article>
-          <article class="card small-card"><h3>4. Supabase</h3><p>Синхронизируем задачи и читаем их обратно из базы.</p></article>
-          <article class="card small-card"><h3>5. Монетизация</h3><p>Показываем Free-лимит и учебные тарифы.</p></article>
-          <article class="card small-card"><h3>6. Документы</h3><p>Показываем README, SQL-схему, test-plan и demo-сценарий.</p></article>
+          <article class="card small-card"><div class="step-number">1</div><h3>Проблема</h3><p>Обычный todo-list не проверяет пересечения времени.</p></article>
+          <article class="card small-card"><div class="step-number">2</div><h3>MVP</h3><p>Добавляем задачи, проверяем конфликты, сортируем план.</p></article>
+          <article class="card small-card"><div class="step-number">3</div><h3>Pro tools</h3><p>Показываем прогресс, фильтры, неделю и экспорт.</p></article>
+          <article class="card small-card"><div class="step-number">4</div><h3>Supabase</h3><p>Синхронизируем задачи и читаем их обратно из базы.</p></article>
+          <article class="card small-card"><div class="step-number">5</div><h3>Монетизация</h3><p>Показываем Free-лимит и учебные тарифы.</p></article>
+          <article class="card small-card"><div class="step-number">6</div><h3>Документы</h3><p>Показываем README, SQL-схему, test-plan и demo-сценарий.</p></article>
         </div>
       </section>
 
       <section class="section">
-        <h2>Быстрые ссылки</h2>
+        <div class="section-title"><div><p class="eyebrow">Быстрые ссылки</p><h2>Все ключевые экраны</h2></div></div>
         <div class="cards">
-          <a class="card small-card" href="pitch.html?v=9"><h3>Pitch</h3><p>Короткая презентация продукта.</p></a>
-          <a class="card small-card" href="register.html"><h3>Register</h3><p>Регистрация пользователя.</p></a>
-          <a class="card small-card" href="login.html"><h3>Login</h3><p>Вход через Supabase.</p></a>
-          <a class="card small-card" href="app.html?v=6"><h3>Planner</h3><p>Основной продуктовый сценарий.</p></a>
-          <a class="card small-card" href="cabinet.html?v=7"><h3>Cabinet</h3><p>Профиль, планы и синхронизация.</p></a>
-          <a class="card small-card" href="cloud.html?v=7"><h3>Cloud</h3><p>Загрузка задач из Supabase.</p></a>
+          <a class="card small-card" href="pitch.html?v=9"><div class="feature-icon">🎤</div><h3>Pitch</h3><p>Короткая презентация продукта.</p></a>
+          <a class="card small-card" href="register.html?v=11"><div class="feature-icon">👤</div><h3>Register</h3><p>Регистрация пользователя.</p></a>
+          <a class="card small-card" href="login.html?v=11"><div class="feature-icon">🔐</div><h3>Login</h3><p>Вход через Supabase.</p></a>
+          <a class="card small-card" href="app.html?v=11"><div class="feature-icon">⚡</div><h3>Planner</h3><p>Основной продуктовый сценарий.</p></a>
+          <a class="card small-card" href="cabinet.html?v=11"><div class="feature-icon">📁</div><h3>Cabinet</h3><p>Профиль, планы и синхронизация.</p></a>
+          <a class="card small-card" href="cloud.html?v=11"><div class="feature-icon">☁️</div><h3>Cloud</h3><p>Загрузка задач из Supabase.</p></a>
         </div>
       </section>
     </div>
