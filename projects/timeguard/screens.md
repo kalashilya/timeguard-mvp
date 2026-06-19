@@ -1,33 +1,105 @@
-# Экранная структура TimeGuard Planner
+# Screens
 
-## 1. Welcome screen
+## 1. Main landing
 
-Первый экран объясняет ценность проекта: пользователь может собрать план дня и заранее увидеть конфликты времени.
+File: `index.html`
 
-## 2. Profile block
+Purpose: first entry point, short product explanation and links to Demo Center and app.
 
-Блок создания учебного профиля: имя, email и роль для демонстрации. Профиль сохраняется в браузере.
+## 2. Demo Center
 
-## 3. Planner screen
+File: `demo-center.html`
 
-Главный рабочий экран. Пользователь добавляет задачу, выбирает дату, время начала, время окончания, приоритет, категорию и комментарий.
+Purpose: one-page defense hub. It prepares demo data, checks MVP status and links to the main screens.
 
-## 4. Timeline screen
+Main actions:
 
-Список задач выбранной даты. Задачи сортируются по времени. Выполненные задачи можно отметить, ненужные удалить.
+- prepare demo data;
+- check MVP status;
+- open Pitch;
+- open Planner;
+- open Cabinet;
+- open Cloud tasks.
 
-## 5. Conflict state
+## 3. Pitch
 
-Состояние ошибки, когда новая задача пересекается с уже сохранённой. Система показывает понятное предупреждение и не сохраняет конфликт.
+File: `pitch.html`
 
-## 6. Cabinet screen
+Purpose: short presentation of the project: problem, user, solution, MVP, data, value, monetization and next steps.
 
-Кабинет пользователя с профилем, текущим тарифом и списком сохранённых планов по датам.
+## 4. Planner
 
-## 7. Pricing screen
+File: `app.html`
 
-Учебный тарифный экран: Free, Plus, Team. Используется для демонстрации paywall-логики.
+Purpose: main product screen.
 
-## 8. Admin screen
+Main blocks:
 
-Учебная admin-сводка. Открывается только при роли admin и показывает агрегированные показатели MVP.
+- profile block;
+- status block;
+- task creation form;
+- day timeline;
+- progress;
+- filters;
+- weekly overview;
+- export buttons.
+
+## 5. Register
+
+File: `register.html`
+
+Purpose: user registration and profile creation.
+
+## 6. Login
+
+File: `login.html`
+
+Purpose: user login through Supabase.
+
+## 7. Verify step
+
+File: `verify-step.html`
+
+Purpose: educational verification step for auth flow explanation.
+
+## 8. Cabinet
+
+File: `cabinet.html`
+
+Purpose: personal cabinet with saved plans and Supabase synchronization.
+
+Main actions:
+
+- show profile;
+- show plan;
+- show saved days;
+- sync with Supabase;
+- open Cloud tasks.
+
+## 9. Cloud tasks
+
+File: `cloud.html`
+
+Purpose: prove that tasks are not only local. The page loads tasks back from Supabase for the current user.
+
+## 10. Pricing
+
+File: `pricing.html`
+
+Purpose: educational paywall and monetization scenario.
+
+## 11. Payment success
+
+File: `payment-success.html`
+
+Purpose: educational tariff activation screen.
+
+## 12. Admin
+
+File: `admin.html`
+
+Purpose: demo admin summary for a user with admin role.
+
+## Defense recommendation
+
+Start from `demo-center.html`, then show `pitch.html`, `app.html`, `cabinet.html`, `cloud.html` and `pricing.html`.
