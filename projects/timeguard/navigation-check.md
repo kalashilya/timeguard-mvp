@@ -4,7 +4,17 @@
 
 Make sure the reviewer can move through the whole MVP without getting lost.
 
-## Main route
+## Primary Render route
+
+1. `https://timeguard-mvp.onrender.com`
+2. `https://timeguard-mvp.onrender.com/demo`
+3. `https://timeguard-mvp.onrender.com/pitch`
+4. `https://timeguard-mvp.onrender.com/planner`
+5. `https://timeguard-mvp.onrender.com/cabinet`
+6. `https://timeguard-mvp.onrender.com/cloud`
+7. `https://timeguard-mvp.onrender.com/pricing`
+
+## GitHub Pages backup route
 
 1. `index.html`
 2. `demo-center.html?v=11`
@@ -49,13 +59,14 @@ The final visual layer is applied to:
 
 Main demo pages use version query parameters:
 
-- `?v=11` for final visual pages;
+- `?v=11` for final visual pages on GitHub Pages;
+- Render short routes redirect to the same final pages;
 - scripts and styles also use versioned URLs where needed.
 
 ## Manual test
 
-1. Open the live site.
-2. Click Demo Center.
+1. Open the Render live site.
+2. Click Demo Center or open `/demo`.
 3. Prepare demo data.
 4. Check MVP status.
 5. Open Pitch.
@@ -67,4 +78,4 @@ Main demo pages use version query parameters:
 
 ## Result
 
-The reviewer can inspect the project from any key page and return to the main defense route.
+The reviewer can inspect the project from any key page and return to the main defense route. Render is the primary public URL; GitHub Pages is the backup URL.
