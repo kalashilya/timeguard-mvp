@@ -4,32 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard cloud</title>
-  <link rel="stylesheet" href="app.css?v=10">
+  <link rel="stylesheet" href="app.css?v=11">
 </head>
 <body data-page="cloud">
   <header class="header">
     <div class="container header-inner">
-      <a class="brand" href="demo-center.html?v=10"><span class="logo">T</span><span>TimeGuard<br><small>cloud data</small></span></a>
-      <nav class="nav"><a href="demo-center.html?v=10">Demo</a><a href="pitch.html?v=9">Pitch</a><a href="app.html?v=10">Планировщик</a><a href="cabinet.html?v=10">Кабинет</a><a href="login.html?v=10">Вход</a></nav>
+      <a class="brand" href="demo-center.html?v=11"><span class="logo">T</span><span>TimeGuard<br><small>cloud data</small></span></a>
+      <nav class="nav"><a href="demo-center.html?v=11">Demo</a><a href="pitch.html?v=9">Pitch</a><a href="app.html?v=11">Планировщик</a><a href="cabinet.html?v=11">Кабинет</a><a href="login.html?v=11">Вход</a></nav>
     </div>
   </header>
   <main class="hero">
     <div class="container">
-      <section class="card pad">
+      <section class="card pad glow">
         <p class="eyebrow">Supabase cloud</p>
-        <h1>Задачи из базы данных</h1>
+        <h1><span class="gradient-text">Задачи</span> из базы данных</h1>
         <p class="lead">Эта страница показывает задачи, которые реально загружены из Supabase для текущего пользователя.</p>
         <div class="actions">
           <button class="btn btn-primary" id="loadCloudBtn">Загрузить из Supabase</button>
-          <a class="btn btn-secondary" href="cabinet.html?v=10">Вернуться в кабинет</a>
+          <a class="btn btn-secondary" href="cabinet.html?v=11">Вернуться в кабинет</a>
         </div>
         <div id="cloudStatus" class="alert hidden" style="margin-top:18px"></div>
       </section>
       <section class="section">
-        <div class="cards">
-          <article class="card small-card"><h3>Пользователь</h3><p id="cloudUser">—</p></article>
-          <article class="card small-card"><h3>Всего задач</h3><p class="price" id="cloudTotal">0</p></article>
-          <article class="card small-card"><h3>Выполнено</h3><p class="price" id="cloudDone">0</p></article>
+        <div class="kpi-grid">
+          <article class="kpi"><strong>Auth</strong><span id="cloudUser">—</span></article>
+          <article class="kpi"><strong id="cloudTotal">0</strong><span>всего задач</span></article>
+          <article class="kpi"><strong id="cloudDone">0</strong><span>выполнено</span></article>
+          <article class="kpi"><strong>RLS</strong><span>только свои данные</span></article>
         </div>
       </section>
       <section class="section">
