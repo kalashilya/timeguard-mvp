@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://timeguard-mvp.onrender.com/sitemap.xml
