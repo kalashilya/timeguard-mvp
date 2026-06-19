@@ -1,1 +1,0 @@
-TimeGuard write access test. If this file exists, GitHub write access works.
