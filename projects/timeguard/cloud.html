@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TimeGuard cloud</title>
+  <link rel="stylesheet" href="app.css?v=7">
+</head>
+<body data-page="cloud">
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>cloud data</small></span></a>
+      <nav class="nav"><a href="app.html">Планировщик</a><a href="cabinet.html">Кабинет</a><a href="login.html">Вход</a><a href="pricing.html">Тарифы</a></nav>
+    </div>
+  </header>
+  <main class="hero">
+    <div class="container">
+      <section class="card pad">
+        <p class="eyebrow">Supabase cloud</p>
+        <h1>Задачи из базы данных</h1>
+        <p class="lead">Эта страница показывает задачи, которые реально загружены из Supabase для текущего пользователя.</p>
+        <div class="actions">
+          <button class="btn btn-primary" id="loadCloudBtn">Загрузить из Supabase</button>
+          <a class="btn btn-secondary" href="cabinet.html?v=5">Вернуться в кабинет</a>
+        </div>
+        <div id="cloudStatus" class="alert hidden" style="margin-top:18px"></div>
+      </section>
+      <section class="section">
+        <div class="cards">
+          <article class="card small-card"><h3>Пользователь</h3><p id="cloudUser">—</p></article>
+          <article class="card small-card"><h3>Всего задач</h3><p class="price" id="cloudTotal">0</p></article>
+          <article class="card small-card"><h3>Выполнено</h3><p class="price" id="cloudDone">0</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <div id="cloudEmpty" class="empty">Нажмите «Загрузить из Supabase».</div>
+        <div id="cloudTasks" class="timeline"></div>
+      </section>
+    </div>
+  </main>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="supabase-settings.js?v=7"></script>
+  <script src="supabase-adapter.js?v=7"></script>
+  <script src="cloud-tasks.js?v=7"></script>
+</body>
+</html>
