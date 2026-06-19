@@ -13,6 +13,7 @@
   <script src="supabase-settings.js?v=10"></script>
   <script src="supabase-adapter.js?v=10"></script>
   <script src="auth-bootstrap.js?v=10"></script>
+  <script src="nav-auth.js?v=12"></script>
   <script>
     loginStatus.textContent = window.TimeGuardSupabase?.ready ? 'Supabase подключён.' : 'Supabase пока не настроен.';
     document.getElementById('loginForm').addEventListener('submit', async function(event) {
@@ -22,6 +23,7 @@
       if (result.error) { alert(result.error.message); return; }
       const user = result.data.user;
       TimeGuardAuth.saveProfile({ name: user.user_metadata?.name || 'TimeGuard User', email: user.email, role: 'user', plan: 'free', createdAt: new Date().toISOString() });
+      window.TimeGuardNav?.renderAuthNav?.();
       location.href = 'cabinet.html?v=12';
     });
   </script>
