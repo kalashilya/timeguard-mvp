@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TimeGuard кабинет</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-page="cabinet">
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="app.html"><span class="logo">T</span><span>TimeGuard<br><small>кабинет</small></span></a>
+      <nav class="nav"><a href="app.html">Главная</a><a href="pricing.html">Тарифы</a><a href="admin.html">Admin</a></nav>
+    </div>
+  </header>
+  <main class="hero">
+    <div class="container">
+      <section class="card pad">
+        <p class="eyebrow">Личный кабинет</p>
+        <h1>Сохранённые планы</h1>
+        <p class="lead">Здесь отображаются профиль, текущий тариф и планы по датам.</p>
+        <div class="cards">
+          <article class="card small-card"><h3>Профиль</h3><p id="cabinetProfile"></p></article>
+          <article class="card small-card"><h3>Тариф</h3><p class="price" id="cabinetPlan">FREE</p></article>
+          <article class="card small-card"><h3>Хранение</h3><p>браузерное хранилище</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <div id="cabinetEmpty" class="empty hidden">Планов пока нет.</div>
+        <div id="cabinetPlans" class="cards"></div>
+      </section>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
