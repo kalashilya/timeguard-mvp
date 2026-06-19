@@ -20,13 +20,7 @@ services:
         source: /overview
         destination: /projects/timeguard/demo-center.html
       - type: redirect
-        source: /demo
-        destination: /projects/timeguard/demo-center.html
-      - type: redirect
         source: /about
-        destination: /projects/timeguard/pitch.html
-      - type: redirect
-        source: /pitch
         destination: /projects/timeguard/pitch.html
       - type: redirect
         source: /planner
