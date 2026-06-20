@@ -17,6 +17,11 @@
   <script src="nav-auth.js?v=12"></script>
   <script>
     authStatus.textContent = window.TimeGuardSupabase?.ready ? 'Облачная синхронизация подключена. Будет создан профиль.' : 'Облачная синхронизация временно недоступна. Работает локальный режим.';
+    function clearLocalPlan() {
+      localStorage.removeItem('timeguard_tasks_v1');
+      localStorage.removeItem('timeguard_stats_v1');
+      localStorage.removeItem('timeguard_selected_plan');
+    }
     document.getElementById('registerForm').addEventListener('submit', async function(event) {
       event.preventDefault();
       const profile = { name: regName.value.trim(), email: regEmail.value.trim(), role: 'user', plan: 'free', createdAt: new Date().toISOString() };
@@ -28,6 +33,7 @@
           await TimeGuardSupabase.upsertProfile({ id: userId, email: profile.email, full_name: profile.name, role: 'user', plan: 'free' });
         }
       }
+      clearLocalPlan();
       TimeGuardAuth.saveProfile(profile);
       window.TimeGuardNav?.renderAuthNav?.();
       location.href = 'verify-step.html?v=12';
