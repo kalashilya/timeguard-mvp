@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard login</title>
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="app.css?v=12">
+  <link rel="stylesheet" href="app.css?v=13">
 </head>
 <body>
-  <header class="header"><div class="container header-inner"><a class="brand" href="../../index.html"><span class="logo">T</span><span>TimeGuard<br><small>вход</small></span></a><nav class="nav"><a href="demo-center.html?v=12">Обзор</a><a href="app.html?v=12">Планировщик</a><a href="register.html?v=12">Регистрация</a><a href="cabinet.html?v=12">Кабинет</a><a href="cloud.html?v=12">Cloud</a></nav></div></header>
-  <main class="hero"><div class="container grid"><section class="card pad glow"><p class="eyebrow">Войти в аккаунт</p><h1><span class="gradient-text">Вход</span> в TimeGuard</h1><p class="lead">Войдите в аккаунт, чтобы открыть кабинет, синхронизацию и облачные задачи.</p><div id="loginStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="loginForm" class="stack"><label class="field"><span>Email</span><input id="loginEmail" required type="email"></label><label class="field"><span>Пароль</span><input id="loginPassword" required type="password"></label><button class="btn btn-primary" type="submit">Войти</button><a class="btn btn-secondary" href="register.html?v=12">Создать аккаунт</a></form></section></div></main>
+  <header class="header"><div class="container header-inner"><a class="brand" href="../../index.html"><span class="logo">T</span><span>TimeGuard<br><small>вход</small></span></a><nav class="nav"><a href="demo-center.html?v=13">Обзор</a><a href="app.html?v=13">Планировщик</a><a href="register.html?v=13">Регистрация</a><a href="cabinet.html?v=13">Кабинет</a><a href="cloud.html?v=13">Cloud</a></nav></div></header>
+  <main class="hero"><div class="container grid"><section class="card pad glow"><p class="eyebrow">Войти в аккаунт</p><h1><span class="gradient-text">Вход</span> в TimeGuard</h1><p class="lead">Войдите в аккаунт, чтобы открыть кабинет, синхронизацию и облачные задачи.</p><div id="loginStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="loginForm" class="stack"><label class="field"><span>Email</span><input id="loginEmail" required type="email"></label><label class="field"><span>Пароль</span><input id="loginPassword" required type="password"></label><button class="btn btn-primary" type="submit">Войти</button><a class="btn btn-secondary" href="register.html?v=13">Создать аккаунт</a></form></section></div></main>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="supabase-settings.js?v=10"></script>
   <script src="supabase-adapter.js?v=10"></script>
@@ -37,7 +37,7 @@
       clearLocalPlanIfAccountChanged(user.email);
       TimeGuardAuth.saveProfile({ name: user.user_metadata?.name || 'TimeGuard User', email: user.email, role: 'user', plan: 'free', createdAt: new Date().toISOString() });
       window.TimeGuardNav?.renderAuthNav?.();
-      location.href = 'cabinet.html?v=12';
+      location.href = 'cabinet.html?v=13';
     });
   </script>
 </body>
