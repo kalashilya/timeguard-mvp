@@ -15,7 +15,7 @@
   <script src="auth-bootstrap.js?v=10"></script>
   <script src="nav-auth.js?v=12"></script>
   <script>
-    authStatus.textContent = window.TimeGuardSupabase?.ready ? 'Supabase подключён. Будет создан реальный профиль.' : 'Supabase пока не настроен. Работает локальный режим.';
+    authStatus.textContent = window.TimeGuardSupabase?.ready ? 'Облачная синхронизация подключена. Будет создан профиль.' : 'Облачная синхронизация временно недоступна. Работает локальный режим.';
     document.getElementById('registerForm').addEventListener('submit', async function(event) {
       event.preventDefault();
       const profile = { name: regName.value.trim(), email: regEmail.value.trim(), role: 'user', plan: 'free', createdAt: new Date().toISOString() };
