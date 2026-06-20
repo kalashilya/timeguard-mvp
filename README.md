@@ -1,120 +1,124 @@
 # TimeGuard Planner
 
-**TimeGuard Planner** — smart planner для реалистичного расписания дня без конфликтов времени.
+**TimeGuard Planner** — учебный MVP планировщика дня, который помогает собрать реалистичное расписание и не даёт сохранить задачи с пересечением по времени.
 
-Продукт помогает пользователю создать аккаунт, добавить задачи, проверить пересечения, увидеть визуальный день, отредактировать план, отправить задачи в Supabase и открыть их на Cloud-странице.
+## 1. Что показывать на защите
 
-## Live links
-
-| Раздел | Ссылка |
+| Что открыть | Зачем |
 |---|---|
-| Главная | `https://timeguard-mvp.onrender.com` |
-| Регистрация | `https://timeguard-mvp.onrender.com/register` |
-| Вход | `https://timeguard-mvp.onrender.com/login` |
-| Обзор | `https://timeguard-mvp.onrender.com/overview` |
-| О продукте | `https://timeguard-mvp.onrender.com/about` |
-| Планировщик | `https://timeguard-mvp.onrender.com/planner` |
-| Кабинет | `https://timeguard-mvp.onrender.com/cabinet` |
-| Cloud | `https://timeguard-mvp.onrender.com/cloud` |
-| Тарифы | `https://timeguard-mvp.onrender.com/pricing` |
-| GitHub Pages backup | `https://kalashilya.github.io/timeguard-mvp/` |
+| `https://timeguard-mvp.onrender.com` | Главная страница продукта |
+| `https://timeguard-mvp.onrender.com/planner` | Основной сценарий: добавление задач и проверка конфликтов |
+| `https://timeguard-mvp.onrender.com/register` | Регистрация пользователя через Supabase Auth |
+| `https://timeguard-mvp.onrender.com/login` | Вход пользователя |
+| `https://timeguard-mvp.onrender.com/cabinet` | Кабинет: профиль, тариф, локальные планы, синхронизация |
+| `https://timeguard-mvp.onrender.com/cloud` | Загрузка задач из Supabase |
+| `https://timeguard-mvp.onrender.com/pricing` | Free / Plus / Team тарифы |
 
-## Product flow
+## 2. Основной пользовательский сценарий
 
-1. Open the site.
-2. Register or log in.
-3. Add tasks with date, start time, end time, priority and category.
-4. TimeGuard blocks tasks that overlap by time.
-5. Use the visual day view to see the schedule by hours.
-6. Edit, complete, delete or export tasks to Google Calendar.
-7. Open Cabinet and sync tasks with Supabase.
-8. Open Cloud and load tasks from the database.
-9. Check Pricing to see Free, Plus and Team plans.
+1. Пользователь открывает планировщик.
+2. Вводит дату, название задачи, начало, окончание, приоритет и категорию.
+3. JavaScript проверяет поля и время.
+4. Если задача пересекается с другой задачей, TimeGuard показывает предупреждение и не сохраняет конфликт.
+5. Если всё корректно, задача сохраняется в браузере и отправляется в Supabase.
+6. В кабинете и Cloud-разделе можно показать сохранённые данные.
 
-## Problem
+## 3. Стек
 
-Regular todo-lists store tasks but do not check whether the schedule is realistic. A user can accidentally put two tasks at the same time and notice the conflict too late.
+- **HTML** — структура страниц.
+- **CSS** — визуальный интерфейс.
+- **JavaScript** — логика задач, конфликтов, лимитов, кабинета и синхронизации.
+- **localStorage** — локальное хранение профиля и задач в браузере.
+- **Supabase Auth** — регистрация и вход.
+- **Supabase Database** — таблицы `profiles`, `tasks`, `task_events` / `analytics_events`.
+- **RLS policies** — правила доступа к данным.
+- **Render Static Site** — публикация MVP.
+- **GitHub** — репозиторий кода и документации.
 
-## Solution
+## 4. Архитектура
 
-TimeGuard validates the schedule before saving. If a task overlaps with another task, the product shows a warning and blocks the impossible plan.
+Проект сделан как **frontend-first MVP**.
 
-## Target audience
+```text
+Пользователь
+  ↓
+HTML-страницы TimeGuard
+  ↓
+app.js: проверка формы, конфликтов, лимитов
+  ↓
+localStorage: быстрое локальное сохранение
+  ↓
+Supabase: облачное сохранение задач и событий
+```
 
-Students, young specialists and managers who combine study, work, meetings and personal tasks in one day.
+Критическая логика MVP находится в `projects/timeguard/app.js`: добавление задач, проверка пересечений, подсчёт статистики и отправка данных в Supabase.
 
-## Hypothesis and metrics
-
-**Hypothesis:** TimeGuard reduces manual schedule checking from 10–15 minutes to 3–5 minutes and reduces the number of time conflicts.
-
-Key metrics:
-
-- time needed to create a daily plan;
-- number of blocked conflicts;
-- number of completed tasks;
-- repeat usage;
-- number of syncs with Supabase;
-- user willingness to pay for higher limits.
-
-## Implemented features
-
-- product landing page;
-- registration and login;
-- dynamic auth navigation with profile menu;
-- localStorage profile and task storage;
-- task creation by date and time;
-- time conflict validation;
-- Free/Plus/Team limits;
-- visual day schedule;
-- task editing;
-- task completion and deletion;
-- Google Calendar export;
-- personal cabinet;
-- Supabase Auth;
-- Supabase task sync;
-- Cloud page that loads tasks from Supabase;
-- RLS policies;
-- Render deployment;
-- short Render routes;
-- prepared Supabase Edge Function `timeguard-create-task` for server-side task validation.
-
-## Tech stack
-
-HTML, CSS, JavaScript, localStorage, Supabase, RLS, Render Static Site, GitHub Pages backup.
-
-## Backend note
-
-The live frontend works with localStorage and Supabase sync. The repository also contains the source code for the Edge Function `timeguard-create-task`, which is prepared as a production backend step for server-side auth, plan limits and time conflict validation.
-
-## Repository structure
+## 5. Чистая структура проекта
 
 ```text
 .
-├── index.html
-├── render.yaml
-├── register/
-├── login/
-├── overview/
-├── about/
-├── planner/
-├── cabinet/
-├── cloud/
-├── pricing/
-├── docs/
-├── notes/
-├── prompts/
-└── projects/
-    └── timeguard/
-        ├── app.html
-        ├── cabinet.html
-        ├── cloud.html
-        ├── demo-center.html
-        ├── pitch.html
-        ├── pricing.html
-        ├── app.css
-        ├── nav-auth.js
-        ├── task-tools.js
-        ├── product-metrics.js
-        ├── cloud-guide.js
-        └── supabase/
+├── index.html                 # главная страница
+├── render.yaml                # настройки Render и коротких URL
+├── register/                  # редирект на регистрацию
+├── login/                     # редирект на вход
+├── planner/                   # редирект на планировщик
+├── cabinet/                   # редирект на кабинет
+├── cloud/                     # редирект на Cloud
+├── pricing/                   # редирект на тарифы
+└── projects/timeguard/
+    ├── app.html               # основной планировщик
+    ├── app.js                 # главная бизнес-логика
+    ├── app.css                # стили проекта
+    ├── register.html          # регистрация
+    ├── login.html             # вход
+    ├── cabinet.html           # кабинет
+    ├── cloud.html             # задачи из Supabase
+    ├── pricing.html           # тарифы
+    ├── payment-success.html   # учебная активация тарифа
+    ├── demo-center.html       # страница для быстрой демонстрации
+    ├── pitch.html             # описание продукта
+    ├── supabase-settings.js   # URL и publishable key Supabase
+    ├── supabase-adapter.js    # обёртка над Supabase client
+    ├── supabase-sync.js       # ручная синхронизация из кабинета
+    ├── cloud-tasks.js         # чтение задач из Supabase
+    ├── nav-auth.js            # состояние навигации и профиля
+    ├── auth-bootstrap.js      # локальный профиль для демо
+    ├── form-hardening.js      # защита формы от спама
+    ├── conflict-modal.js      # окно конфликта времени
+    └── supabase/schema.sql    # схема базы и RLS
 ```
+
+Лишние экспериментальные скрипты вынесены из основного сценария, чтобы защита была понятнее: главная демонстрация теперь строится вокруг планировщика, Supabase и Cloud.
+
+## 6. Supabase: что где находится
+
+| Таблица | Назначение |
+|---|---|
+| `profiles` | пользователь: email, имя, роль, тариф |
+| `tasks` | задачи: дата, начало, окончание, приоритет, категория, статус |
+| `task_events` | события авторизованного пользователя |
+| `analytics_events` | demo-события для учебной аналитики |
+
+На стороне frontend подключение идёт через:
+
+```text
+projects/timeguard/supabase-settings.js
+projects/timeguard/supabase-adapter.js
+projects/timeguard/app.js
+```
+
+В `app.js` задача сначала сохраняется локально, затем отправляется в Supabase. Если пользователь вошёл через Supabase Auth, задача сохраняется с `user_id`. Если это demo-сценарий, используется `demo_session_id`.
+
+## 7. Метрики MVP
+
+- количество созданных задач;
+- количество остановленных конфликтов;
+- количество выполненных задач;
+- количество дней с планами;
+- срабатывание Free-лимита;
+- открытие paywall;
+- отправка задач в Supabase.
+
+## 8. Что говорить преподавателю коротко
+
+> TimeGuard — это frontend-first MVP на HTML, CSS и JavaScript. Главная логика в `app.js`: пользователь добавляет задачу, система проверяет пересечения по времени и сохраняет корректные задачи. Данные хранятся локально в `localStorage` и дополнительно отправляются в Supabase. В Supabase есть таблицы для профилей, задач и событий. Репозиторий очищен: оставлены только файлы, которые относятся к рабочему сценарию защиты.
