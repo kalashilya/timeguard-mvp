@@ -14,6 +14,8 @@
 | `https://timeguard-mvp.onrender.com/cloud` | Загрузка задач из Supabase |
 | `https://timeguard-mvp.onrender.com/pricing` | Free / Plus / Team тарифы |
 
+Короткие ссылки работают через `render.yaml`, поэтому отдельные папки `login/`, `planner/`, `cabinet/` и другие в корне больше не нужны.
+
 ## 2. Основной пользовательский сценарий
 
 1. Пользователь открывает планировщик.
@@ -42,7 +44,9 @@
 ```text
 Пользователь
   ↓
-HTML-страницы TimeGuard
+Render route /planner, /login, /cloud
+  ↓
+projects/timeguard/*.html
   ↓
 app.js: проверка формы, конфликтов, лимитов
   ↓
@@ -57,38 +61,36 @@ Supabase: облачное сохранение задач и событий
 
 ```text
 .
+├── README.md                  # описание проекта для защиты
 ├── index.html                 # главная страница
-├── render.yaml                # настройки Render и коротких URL
-├── register/                  # редирект на регистрацию
-├── login/                     # редирект на вход
-├── planner/                   # редирект на планировщик
-├── cabinet/                   # редирект на кабинет
-├── cloud/                     # редирект на Cloud
-├── pricing/                   # редирект на тарифы
-└── projects/timeguard/
-    ├── app.html               # основной планировщик
-    ├── app.js                 # главная бизнес-логика
-    ├── app.css                # стили проекта
-    ├── register.html          # регистрация
-    ├── login.html             # вход
-    ├── cabinet.html           # кабинет
-    ├── cloud.html             # задачи из Supabase
-    ├── pricing.html           # тарифы
-    ├── payment-success.html   # учебная активация тарифа
-    ├── demo-center.html       # страница для быстрой демонстрации
-    ├── pitch.html             # описание продукта
-    ├── supabase-settings.js   # URL и publishable key Supabase
-    ├── supabase-adapter.js    # обёртка над Supabase client
-    ├── supabase-sync.js       # ручная синхронизация из кабинета
-    ├── cloud-tasks.js         # чтение задач из Supabase
-    ├── nav-auth.js            # состояние навигации и профиля
-    ├── auth-bootstrap.js      # локальный профиль для демо
-    ├── form-hardening.js      # защита формы от спама
-    ├── conflict-modal.js      # окно конфликта времени
-    └── supabase/schema.sql    # схема базы и RLS
+├── render.yaml                # короткие URL на Render: /planner, /login, /cloud
+├── favicon.svg                # иконка проекта
+└── projects/
+    └── timeguard/
+        ├── app.html               # основной планировщик
+        ├── app.js                 # главная бизнес-логика
+        ├── app.css                # стили проекта
+        ├── register.html          # регистрация
+        ├── login.html             # вход
+        ├── cabinet.html           # кабинет
+        ├── cloud.html             # задачи из Supabase
+        ├── pricing.html           # тарифы
+        ├── payment-success.html   # учебная активация тарифа
+        ├── demo-center.html       # страница для быстрой демонстрации
+        ├── pitch.html             # описание продукта
+        ├── supabase-settings.js   # URL и publishable key Supabase
+        ├── supabase-adapter.js    # обёртка над Supabase client
+        ├── supabase-sync.js       # ручная синхронизация из кабинета
+        ├── cloud-tasks.js         # чтение задач из Supabase
+        ├── nav-auth.js            # состояние навигации и профиля
+        ├── auth-bootstrap.js      # локальный профиль для demo
+        ├── form-hardening.js      # защита формы от спама
+        ├── conflict-modal.js      # окно конфликта времени
+        └── supabase/
+            └── schema.sql         # схема базы и RLS
 ```
 
-Лишние экспериментальные скрипты вынесены из основного сценария, чтобы защита была понятнее: главная демонстрация теперь строится вокруг планировщика, Supabase и Cloud.
+В корне оставлены только файлы запуска и одна папка `projects/`. Основной код лежит внутри `projects/timeguard/`, чтобы GitHub выглядел аккуратно.
 
 ## 6. Supabase: что где находится
 
@@ -121,4 +123,4 @@ projects/timeguard/app.js
 
 ## 8. Что говорить преподавателю коротко
 
-> TimeGuard — это frontend-first MVP на HTML, CSS и JavaScript. Главная логика в `app.js`: пользователь добавляет задачу, система проверяет пересечения по времени и сохраняет корректные задачи. Данные хранятся локально в `localStorage` и дополнительно отправляются в Supabase. В Supabase есть таблицы для профилей, задач и событий. Репозиторий очищен: оставлены только файлы, которые относятся к рабочему сценарию защиты.
+> TimeGuard — это frontend-first MVP на HTML, CSS и JavaScript. Главная логика в `app.js`: пользователь добавляет задачу, система проверяет пересечения по времени и сохраняет корректные задачи. Данные хранятся локально в `localStorage` и дополнительно отправляются в Supabase. В Supabase есть таблицы для профилей, задач и событий. Репозиторий очищен: в корне оставлены только запуск, настройки Render и папка `projects`, а основной код лежит внутри `projects/timeguard`.
