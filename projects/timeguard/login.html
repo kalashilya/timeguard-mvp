@@ -17,12 +17,24 @@
   <script src="nav-auth.js?v=12"></script>
   <script>
     loginStatus.textContent = window.TimeGuardSupabase?.ready ? 'Облачная синхронизация подключена.' : 'Облачная синхронизация временно недоступна.';
+    function readProfile() {
+      try { return JSON.parse(localStorage.getItem('timeguard_profile_v1')); } catch { return null; }
+    }
+    function clearLocalPlanIfAccountChanged(nextEmail) {
+      const current = readProfile();
+      if (!current?.email || String(current.email).toLowerCase() !== String(nextEmail).toLowerCase()) {
+        localStorage.removeItem('timeguard_tasks_v1');
+        localStorage.removeItem('timeguard_stats_v1');
+        localStorage.removeItem('timeguard_selected_plan');
+      }
+    }
     document.getElementById('loginForm').addEventListener('submit', async function(event) {
       event.preventDefault();
       if (!window.TimeGuardSupabase?.ready) { alert('Облачная синхронизация временно недоступна.'); return; }
       const result = await TimeGuardSupabase.signIn(loginEmail.value.trim(), loginPassword.value);
       if (result.error) { alert(result.error.message); return; }
       const user = result.data.user;
+      clearLocalPlanIfAccountChanged(user.email);
       TimeGuardAuth.saveProfile({ name: user.user_metadata?.name || 'TimeGuard User', email: user.email, role: 'user', plan: 'free', createdAt: new Date().toISOString() });
       window.TimeGuardNav?.renderAuthNav?.();
       location.href = 'cabinet.html?v=12';
