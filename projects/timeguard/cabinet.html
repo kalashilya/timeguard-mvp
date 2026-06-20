@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TimeGuard кабинет</title>
-  <link rel="stylesheet" href="app.css?v=12">
+  <link rel="stylesheet" href="app.css?v=13">
 </head>
 <body data-page="cabinet">
   <header class="header">
     <div class="container header-inner">
       <a class="brand" href="../../index.html"><span class="logo">T</span><span>TimeGuard<br><small>кабинет</small></span></a>
-      <nav class="nav"><a href="demo-center.html?v=12">Обзор</a><a href="app.html?v=12">Планировщик</a><a href="cloud.html?v=12">Cloud</a><a href="pricing.html?v=12">Тарифы</a><a href="login.html?v=12">Войти</a><a class="btn btn-primary" href="register.html?v=12">Регистрация</a></nav>
+      <nav class="nav"><a href="demo-center.html?v=13">Обзор</a><a href="app.html?v=13">Планировщик</a><a href="cloud.html?v=13">Cloud</a><a href="pricing.html?v=13">Тарифы</a><a href="login.html?v=13">Войти</a><a class="btn btn-primary" href="register.html?v=13">Регистрация</a></nav>
     </div>
   </header>
   <main class="hero">
     <div class="container">
       <section class="card pad glow">
         <p class="eyebrow">Личный кабинет</p>
-        <h1>Сохранённые планы</h1>
-        <p class="lead">Здесь отображаются профиль, текущий тариф и планы по датам.</p>
+        <h1>Профиль и планы</h1>
+        <p class="lead">Здесь отображаются профиль, текущий тариф и планы по датам. Кнопка синхронизации отправляет локальные задачи в Supabase для авторизованного пользователя.</p>
         <div class="cards">
           <article class="card small-card"><div class="feature-icon">👤</div><h3>Профиль</h3><p id="cabinetProfile"></p></article>
           <article class="card small-card"><div class="feature-icon">💳</div><h3>Тариф</h3><p class="price" id="cabinetPlan">FREE</p></article>
-          <article class="card small-card"><div class="feature-icon">☁️</div><h3>Хранение</h3><p>браузер + Supabase</p></article>
+          <article class="card small-card"><div class="feature-icon">☁️</div><h3>Хранение</h3><p>localStorage + Supabase</p></article>
         </div>
-        <div class="actions"><button class="btn btn-primary" id="syncSupabaseBtn">Синхронизировать с Supabase</button><a class="btn btn-secondary" href="cloud.html?v=12">Открыть Cloud-задачи</a><a class="btn btn-ghost" href="login.html?v=12">Войти через Supabase</a></div>
+        <div class="actions"><button class="btn btn-primary" id="syncSupabaseBtn">Синхронизировать с Supabase</button><a class="btn btn-secondary" href="cloud.html?v=13">Открыть Cloud-задачи</a><a class="btn btn-ghost" href="login.html?v=13">Войти через Supabase</a></div>
         <div id="syncResult" class="alert hidden"></div>
       </section>
       <section class="section">
@@ -38,6 +38,6 @@
   <script src="supabase-adapter.js?v=10"></script>
   <script src="supabase-sync.js?v=10"></script>
   <script src="nav-auth.js?v=12"></script>
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=13"></script>
 </body>
 </html>
