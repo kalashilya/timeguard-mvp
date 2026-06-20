@@ -17,10 +17,10 @@
     <div class="container">
       <section class="card pad glow">
         <p class="eyebrow">Cloud storage</p>
-        <h1><span class="gradient-text">Задачи</span> из базы данных</h1>
-        <p class="lead">Здесь отображаются задачи, которые загружены из Supabase для текущего пользователя.</p>
+        <h1><span class="gradient-text">Облачные</span> задачи</h1>
+        <p class="lead">Здесь отображаются задачи, которые сохранены в облаке для текущего пользователя.</p>
         <div class="actions">
-          <button class="btn btn-primary" id="loadCloudBtn">Загрузить из Supabase</button>
+          <button class="btn btn-primary" id="loadCloudBtn">Загрузить из облака</button>
           <a class="btn btn-secondary" href="cabinet.html?v=12">Вернуться в кабинет</a>
           <a class="btn btn-ghost" href="login.html?v=12">Войти</a>
         </div>
@@ -28,14 +28,14 @@
       </section>
       <section class="section">
         <div class="kpi-grid">
-          <article class="kpi"><strong>Auth</strong><span id="cloudUser">—</span></article>
+          <article class="kpi"><strong>Аккаунт</strong><span id="cloudUser">—</span></article>
           <article class="kpi"><strong id="cloudTotal">0</strong><span>всего задач</span></article>
           <article class="kpi"><strong id="cloudDone">0</strong><span>выполнено</span></article>
-          <article class="kpi"><strong>RLS</strong><span>только свои данные</span></article>
+          <article class="kpi"><strong>Доступ</strong><span>только свои данные</span></article>
         </div>
       </section>
       <section class="section">
-        <div id="cloudEmpty" class="empty">Нажмите «Загрузить из Supabase».</div>
+        <div id="cloudEmpty" class="empty">Нажмите «Загрузить из облака».</div>
         <div id="cloudTasks" class="timeline"></div>
       </section>
     </div>
@@ -45,6 +45,6 @@
   <script src="supabase-adapter.js?v=10"></script>
   <script src="nav-auth.js?v=12"></script>
   <script src="cloud-guide.js?v=1"></script>
-  <script src="cloud-tasks.js?v=10"></script>
+  <script src="cloud-tasks.js?v=11"></script>
 </body>
 </html>
