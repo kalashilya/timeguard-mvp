@@ -29,23 +29,23 @@
           <span class="badge">${labelPriority(task.priority)}</span>
           <span class="badge">${labelCategory(task.category)}</span>
         </div>
-        <div class="tag">${task.done ? 'done' : 'active'}</div>
+        <div class="tag">${task.done ? 'готово' : 'активно'}</div>
       </article>`).join('');
   }
 
   async function loadCloudTasks() {
     if (!window.TimeGuardSupabase?.ready) {
-      say('Supabase не настроен. Проверьте настройки проекта.', 'bad');
+      say('Облачная синхронизация временно недоступна. Проверьте настройки проекта.', 'bad');
       return;
     }
 
     const session = await TimeGuardSupabase.getSession();
     if (!session?.user) {
-      say('Сначала войдите через Supabase, затем вернитесь на эту страницу.', 'bad');
+      say('Сначала войдите в аккаунт, затем вернитесь на эту страницу.', 'bad');
       return;
     }
 
-    say('Загружаю задачи из Supabase...');
+    say('Загружаю задачи из облака...');
     const result = await TimeGuardSupabase.client
       .from('tasks')
       .select('id, task_date, title, start_time, end_time, priority, category, notes, done, created_at')
@@ -55,12 +55,12 @@
 
     if (result.error) {
       console.error('TimeGuard cloud load error:', result.error);
-      say(`Ошибка загрузки Supabase: ${result.error.message}`, 'bad');
+      say(`Ошибка загрузки из облака: ${result.error.message}`, 'bad');
       return;
     }
 
     render(result.data || [], session.user.email);
-    say(`Загружено из Supabase: ${(result.data || []).length} задач.`, 'ok');
+    say(`Загружено из облака: ${(result.data || []).length} задач.`, 'ok');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
