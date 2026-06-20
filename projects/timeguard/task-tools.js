@@ -67,6 +67,15 @@
     editTaskModal.classList.remove('hidden');
   }
 
+  function saveEditedTask(tasks, id, next, removeConflictId = null) {
+    const updated = tasks
+      .filter((task) => task.id !== removeConflictId)
+      .map((task) => task.id === id ? next : task);
+    saveTasks(updated);
+    closeModal();
+    location.reload();
+  }
+
   function saveEdit(event) {
     event.preventDefault();
     const tasks = readTasks();
@@ -93,13 +102,19 @@
 
     const conflict = tasks.find((task) => task.id !== id && task.date === next.date && toMinutes(next.start) < toMinutes(task.end) && toMinutes(next.end) > toMinutes(task.start));
     if (conflict) {
-      alert(`Изменение невозможно: задача пересекается с «${conflict.title}».`);
+      const replace = () => saveEditedTask(tasks, id, next, conflict.id);
+      const chooseTime = () => editTaskStart?.focus();
+      if (window.TimeGuardConflict?.open) {
+        window.TimeGuardConflict.open({ conflict, next, onReplace: replace, onChooseTime: chooseTime });
+      } else if (confirm(`Конфликт задач: изменение пересекается с «${conflict.title}». Заменить конфликтующую задачу?`)) {
+        replace();
+      } else {
+        chooseTime();
+      }
       return;
     }
 
-    saveTasks(tasks.map((task) => task.id === id ? next : task));
-    closeModal();
-    location.reload();
+    saveEditedTask(tasks, id, next);
   }
 
   function enhanceTimeline() {
