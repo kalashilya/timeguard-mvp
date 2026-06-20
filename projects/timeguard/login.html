@@ -8,17 +8,17 @@
 </head>
 <body>
   <header class="header"><div class="container header-inner"><a class="brand" href="../../index.html"><span class="logo">T</span><span>TimeGuard<br><small>вход</small></span></a><nav class="nav"><a href="demo-center.html?v=12">Обзор</a><a href="app.html?v=12">Планировщик</a><a href="register.html?v=12">Регистрация</a><a href="cabinet.html?v=12">Кабинет</a><a href="cloud.html?v=12">Cloud</a></nav></div></header>
-  <main class="hero"><div class="container grid"><section class="card pad glow"><p class="eyebrow">Войти в аккаунт</p><h1><span class="gradient-text">Вход</span> в TimeGuard</h1><p class="lead">Войдите через Supabase, чтобы открыть кабинет, синхронизацию и облачные задачи.</p><div id="loginStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="loginForm" class="stack"><label class="field"><span>Email</span><input id="loginEmail" required type="email"></label><label class="field"><span>Пароль</span><input id="loginPassword" required type="password"></label><button class="btn btn-primary" type="submit">Войти</button><a class="btn btn-secondary" href="register.html?v=12">Создать аккаунт</a></form></section></div></main>
+  <main class="hero"><div class="container grid"><section class="card pad glow"><p class="eyebrow">Войти в аккаунт</p><h1><span class="gradient-text">Вход</span> в TimeGuard</h1><p class="lead">Войдите в аккаунт, чтобы открыть кабинет, синхронизацию и облачные задачи.</p><div id="loginStatus" class="alert">Проверка подключения...</div></section><section class="card pad"><form id="loginForm" class="stack"><label class="field"><span>Email</span><input id="loginEmail" required type="email"></label><label class="field"><span>Пароль</span><input id="loginPassword" required type="password"></label><button class="btn btn-primary" type="submit">Войти</button><a class="btn btn-secondary" href="register.html?v=12">Создать аккаунт</a></form></section></div></main>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="supabase-settings.js?v=10"></script>
   <script src="supabase-adapter.js?v=10"></script>
   <script src="auth-bootstrap.js?v=10"></script>
   <script src="nav-auth.js?v=12"></script>
   <script>
-    loginStatus.textContent = window.TimeGuardSupabase?.ready ? 'Supabase подключён.' : 'Supabase пока не настроен.';
+    loginStatus.textContent = window.TimeGuardSupabase?.ready ? 'Облачная синхронизация подключена.' : 'Облачная синхронизация временно недоступна.';
     document.getElementById('loginForm').addEventListener('submit', async function(event) {
       event.preventDefault();
-      if (!window.TimeGuardSupabase?.ready) { alert('Supabase не настроен.'); return; }
+      if (!window.TimeGuardSupabase?.ready) { alert('Облачная синхронизация временно недоступна.'); return; }
       const result = await TimeGuardSupabase.signIn(loginEmail.value.trim(), loginPassword.value);
       if (result.error) { alert(result.error.message); return; }
       const user = result.data.user;
